@@ -2,6 +2,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import config.CarConfig;
+import model.Kia;
 
 public class AnnotationMain {
 
@@ -12,6 +13,11 @@ public class AnnotationMain {
 		for (String name : beans) {
 			System.out.println(name);
 		}
+		
+		Kia kia = ctx.getBean(Kia.class);
+		System.out.println(kia);
+		kia.move();
+		
 	}
 
 }

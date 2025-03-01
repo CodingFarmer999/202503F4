@@ -1,8 +1,17 @@
 package config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import model.Kia;
+import model.ToyotaEngine;
 
 @Configuration
 public class CarConfig {
 
+	@Bean
+	public Kia kia() {
+		return new Kia(new ToyotaEngine());
+	}
+	
 }

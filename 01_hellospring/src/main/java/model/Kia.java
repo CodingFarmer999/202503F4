@@ -10,6 +10,10 @@ public class Kia {
 		super();
 	}
 	
+	public Kia(Engine engine) {
+		this.engine = engine;
+	}
+	
 	public Kia(Integer price, Engine engine) {
 		super();
 		this.price = price;
