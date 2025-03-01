@@ -16,5 +16,10 @@
     </bean>
     
     <bean id="toyotaEngine" class="model.ToyotaEngine"></bean>
+    
+    <bean id="kia" class="model.Kia">
+	    <constructor-arg value="1000000"></constructor-arg>
+	    <constructor-arg ref="toyotaEngine"></constructor-arg>
+    </bean>
 
 </beans>

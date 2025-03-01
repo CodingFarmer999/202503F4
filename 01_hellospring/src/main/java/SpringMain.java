@@ -1,6 +1,7 @@
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import model.Kia;
 import model.Toyota;
 
 public class SpringMain {
@@ -16,6 +17,10 @@ public class SpringMain {
 		
 		Toyota car = ctx.getBean(Toyota.class);
 		car.move();
+		
+		Kia kia = ctx.getBean(Kia.class);
+		System.out.println(kia);
+		kia.move();
 	}
 
 }
