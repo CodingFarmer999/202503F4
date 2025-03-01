@@ -22,8 +22,10 @@
 	    <constructor-arg ref="toyotaEngine"></constructor-arg>
     </bean>
     
-    <bean id="tesla" class="model.Tesla" autowire="byType"></bean>
+    <bean id="tesla" class="model.Tesla" autowire="byName"></bean>
     
-    <bean id="kiaEngine" class="model.KiaEngine"></bean>
+    <bean id="engine" class="model.ToyotaEngine"></bean>
+    
+    <bean id="kiaEngine" class="model.KiaEngine" primary="true"></bean>
 
 </beans>
