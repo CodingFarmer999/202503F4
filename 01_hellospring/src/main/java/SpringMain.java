@@ -4,7 +4,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class SpringMain {
 
 	public static void main(String[] args) {
-		ApplicationContext ctx = new ClassPathXmlApplicationContext();
+		// Spring IoC 容器
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("bean.xml");
 
 	}
 
