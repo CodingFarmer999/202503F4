@@ -10,6 +10,10 @@ public class Tesla {
 		super();
 	}
 	
+	public Tesla(Engine engine) {
+		this.engine = engine;
+	}
+	
 	public Tesla(Integer price, Engine engine) {
 		super();
 		this.price = price;
