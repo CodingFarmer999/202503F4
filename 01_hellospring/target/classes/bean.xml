@@ -5,6 +5,16 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- bean definitions here -->
-    <bean id="toyota" class="model.Toyota"></bean>
+    <!--
+    <bean id="toyota" class="model.Toyota">
+    	<property name="engine" ref="toyotaEngine"></property>
+    </bean>
+    -->
+    
+    <bean id="toyota" class="model.Toyota">
+    	<constructor-arg ref="toyotaEngine"></constructor-arg>
+    </bean>
+    
+    <bean id="toyotaEngine" class="model.ToyotaEngine"></bean>
 
 </beans>
