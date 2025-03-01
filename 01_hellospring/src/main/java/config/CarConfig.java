@@ -1,6 +1,7 @@
 package config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import model.Kia;
@@ -9,6 +10,7 @@ import model.Tesla;
 import model.ToyotaEngine;
 
 @Configuration
+@ComponentScan(basePackages = {"model"})
 public class CarConfig {
 
 	@Bean
