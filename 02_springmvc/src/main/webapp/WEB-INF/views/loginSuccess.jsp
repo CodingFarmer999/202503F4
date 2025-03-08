@@ -8,5 +8,7 @@
 </head>
 <body>
 ${ user } 登入成功
+
+${ user3 } 登入成功
 </body>
 </html>

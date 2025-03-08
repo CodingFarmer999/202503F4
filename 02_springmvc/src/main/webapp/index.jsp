@@ -43,7 +43,7 @@
 	
 	<hr/>
 	
-	<form action="loginModelAndView" method="POST">
+	<form action="loginModelAttribute" method="POST">
 	    暱稱: <input type="text" name="nickname"/> <br>
 	    手機: <input type="text" name="phone"/> <br>
 	    興趣：<br>
