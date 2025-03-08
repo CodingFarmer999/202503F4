@@ -3,11 +3,13 @@ package controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import vo.UserVo;
 
 //@Component
 @Controller
@@ -58,9 +60,15 @@ public class LoginController {
 		return "loginSuccess";
 	}
 	
-	@GetMapping("/login/user/{u1}")
-	public String testPath(@PathVariable("u1") String username) {
+	@GetMapping("/login/user/{username}")
+	public String testPath(@PathVariable("username") String username) {
 		System.out.println("username :" + username);
+		return "loginSuccess";
+	}
+	
+	@PostMapping("/param/class")
+	public String getHobby(UserVo user) {
+		System.out.println(user);
 		return "loginSuccess";
 	}
 }
