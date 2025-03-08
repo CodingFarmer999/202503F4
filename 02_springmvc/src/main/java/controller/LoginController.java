@@ -1,11 +1,13 @@
 package controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -70,5 +72,21 @@ public class LoginController {
 	public String getHobby(UserVo user) {
 		System.out.println(user);
 		return "loginSuccess";
+	}
+	
+	@RequestMapping(value = "/loginModel")
+	public String loginModel(@RequestParam("username2") String username, @RequestParam(value = "password2") String password, Model model) {
+	    model.addAttribute("user", "佛殺凱蒂貓二世");
+	    return "loginSuccess";
+	}
+	
+	@RequestMapping(value = "/loginModelAndView")
+	public ModelAndView loginModelAndView(UserVo user) {
+	    ModelAndView mv = new ModelAndView();
+	    // 設置視圖名稱
+	    mv.setViewName("loginSuccess");
+	    // 添加模型資料
+	    mv.addObject("user", user);
+	    return mv;
 	}
 }
