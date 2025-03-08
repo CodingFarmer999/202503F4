@@ -94,6 +94,12 @@ public class LoginController {
 	// 應用在方法參數上
 	@RequestMapping(value = "/loginModelAttribute")
 	public String loginModel(@ModelAttribute("user3") UserVo user) {
-	    return "loginSuccess";
+	    return "loginFail";
+	}
+	
+	// 應用在方法返回的物件上
+	@ModelAttribute("title")
+	public String getTitle() {
+	    return "我是標題";
 	}
 }

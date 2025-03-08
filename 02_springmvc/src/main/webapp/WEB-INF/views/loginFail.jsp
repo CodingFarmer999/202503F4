@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1>${ title }</h1>
 登入失敗
 </body>
 </html>

@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<h1>${ title }</h1>
 ${ user } 登入成功
 
 ${ user3 } 登入成功
