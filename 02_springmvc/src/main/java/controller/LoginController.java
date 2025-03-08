@@ -14,7 +14,7 @@ public class LoginController {
 
 //	@RequestMapping(value = "/login", method = {RequestMethod.GET})
 	@GetMapping("/login")
-	public String login(@RequestParam("username2") String username, @RequestParam("password2") String password) {
+	public String login(@RequestParam("username2") String username, @RequestParam(value = "password2", required = false) String password) {
 
 		System.out.println("username: " + username);
 		System.out.println("password: " + password);
