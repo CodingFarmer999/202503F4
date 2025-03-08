@@ -15,6 +15,7 @@ public class Benz {
 
 	}
 	
+	//@Autowired
 	public Benz(Engine engine) {
 		super();
 		this.engine = engine;
@@ -24,6 +25,7 @@ public class Benz {
 		return engine;
 	}
 
+	//@Autowired
 	public void setEngine(Engine engine) {
 		this.engine = engine;
 	}
