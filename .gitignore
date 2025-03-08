@@ -25,3 +25,10 @@ replay_pid*
 
 .metadata/*
 /.metadata/
+
+Servers/*
+*/target/*
+*/.settings/*
+*/.mvn/*
+*/.classpath
+*/.project
