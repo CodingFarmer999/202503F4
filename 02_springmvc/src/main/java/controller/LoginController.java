@@ -2,6 +2,7 @@ package controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -54,6 +55,12 @@ public class LoginController {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		req.setAttribute("user", "佛殺凱蒂貓");
+		return "loginSuccess";
+	}
+	
+	@GetMapping("/login/user/{u1}")
+	public String testPath(@PathVariable("u1") String username) {
+		System.out.println("username :" + username);
 		return "loginSuccess";
 	}
 }
