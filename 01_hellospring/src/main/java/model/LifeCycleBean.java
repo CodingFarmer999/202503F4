@@ -1,12 +1,14 @@
 package model;
 
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 
 @Component
-public class LifeCycleBean {
+public class LifeCycleBean implements InitializingBean, DisposableBean  {
 	
 	public LifeCycleBean() {
 		System.out.println("LifeCycleBean 建構式");
@@ -29,4 +31,16 @@ public class LifeCycleBean {
     public void cleanup() {
         System.out.println("5. 我是@PreDestroy");
     }
+
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		System.out.println("4. 我是afterPropertiesSet，要實作 InitializingBean");
+		
+	}
+
+	@Override
+	public void destroy() throws Exception {
+		System.out.println("6. 我是destroy，要實作 DisposableBean");
+		
+	}
 }

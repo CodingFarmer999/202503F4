@@ -6,12 +6,15 @@ import model.LifeCycleBean;
 public class LifeCycleMain {
 
 	public static void main(String[] args) {
-		ApplicationContext ctx = new AnnotationConfigApplicationContext(LifeCycleBean.class);
+		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(LifeCycleBean.class);
 		
 		String[] beans = ctx.getBeanDefinitionNames();
 		for (String name : beans) {
 			System.out.println(name);
 		}
+
+		System.out.println("容器要被關了~~~");
+		ctx.close();
 	}
 
 }
