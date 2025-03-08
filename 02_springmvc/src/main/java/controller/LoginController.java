@@ -3,7 +3,6 @@ package controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 //@Component
@@ -23,5 +22,26 @@ public class LoginController {
 			return "loginFail";
 		}
 		
+	}
+	
+	// "?" 匹配一個字元 test1, test2 -> OK, test10 -> NO
+	// @RequestMapping("/pattern/test?")
+	public String pattern1() {
+	    System.out.println("Pattern: /pattern/test?");
+	    return "loginSuccess";
+	}
+	
+	// "*" 匹配多個字元 test10, test100 -> OK
+	// @RequestMapping("/pattern/test*")
+	public String pattern2() {
+	    System.out.println("Pattern: /pattern/test*");
+	    return "loginSuccess";
+	}
+	
+	// "**" 匹配零個或多個路徑，路徑名稱任意 /abcd, /abcd/defg -> OK
+	@RequestMapping("/pattern/**")
+	public String pattern3() {
+	    System.out.println("Pattern: /pattern/**");
+	    return "loginSuccess";
 	}
 }
