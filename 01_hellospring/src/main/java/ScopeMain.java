@@ -2,6 +2,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import config.CarConfig;
+import model.LazyBean;
 import model.ProtoTypeBean;
 import model.SingletonBean;
 
@@ -26,6 +27,10 @@ public class ScopeMain {
 		
 		ProtoTypeBean pBean2 = (ProtoTypeBean)ctx.getBean("protoTypeBean");
 		System.out.println(pBean2);
+		
+		System.out.println("================ Lazy ===================");
+		LazyBean lazyBean = ctx.getBean(LazyBean.class);
+
 	}
 
 }
