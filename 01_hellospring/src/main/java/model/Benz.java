@@ -1,9 +1,12 @@
 package model;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Benz {
+
+	@Autowired
 	private Engine engine;
 	
 	public Benz() {
@@ -27,6 +30,8 @@ public class Benz {
 	public String toString() {
 		return "Benz [engine=" + engine + "]";
 	}
-	
+	public void move() {
+		engine.start();
+	}
 	
 }
