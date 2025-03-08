@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LoginController {
 
 	@RequestMapping("/login")
-	public String login() {
+	public String login(String username, String password) {
+		
+		System.out.println("username: " + username);
+		System.out.println("password: " + password);
 		return "loginSuccess";
 	}
 }
