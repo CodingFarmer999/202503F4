@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-登入成功
+${ user } 登入成功
 </body>
 </html>
