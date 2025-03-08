@@ -10,12 +10,12 @@ public class Benz {
 	@Autowired
 	@Qualifier("kiaEngine")
 	private Engine engine;
-	
+
 	public Benz() {
 
 	}
-	
-	//@Autowired
+
+	// @Autowired
 	public Benz(Engine engine) {
 		super();
 		this.engine = engine;
@@ -25,7 +25,7 @@ public class Benz {
 		return engine;
 	}
 
-	//@Autowired
+	// @Autowired
 	public void setEngine(Engine engine) {
 		this.engine = engine;
 	}
@@ -34,8 +34,9 @@ public class Benz {
 	public String toString() {
 		return "Benz [engine=" + engine + "]";
 	}
+
 	public void move() {
 		engine.start();
 	}
-	
+
 }
