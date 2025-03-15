@@ -1,0 +1,46 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+
+         <!-- 方言設定 -->
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.MySQLDialect
+        </property>
+
+        <!-- JDBC Driver驅動 -->
+        <property name="hibernate.connection.driver_class">
+            com.mysql.cj.jdbc.Driver
+        </property>
+
+        <!-- URL -->
+        <property name="hibernate.connection.url">
+            jdbc:mysql://localhost:3306/course
+        </property>
+
+        <!-- 資料庫使用者，自行調整 -->
+        <property name="hibernate.connection.username">
+            root
+        </property>
+
+        <!-- 資料庫密碼，自行調整 -->
+        <property name="hibernate.connection.password">
+            root
+        </property>
+
+        <!-- 是否顯示SQL於console -->
+        <property name="show_sql">
+            true
+        </property>
+
+        <!-- 將顯示的SQL排版 -->
+        <property name="format_sql">
+            true
+        </property>
+
+        <!-- List of XML mapping files -->
+        <!-- <mapping class="entity.ChatEntity" /> -->
+
+    </session-factory>
+</hibernate-configuration>
