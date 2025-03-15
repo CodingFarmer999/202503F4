@@ -1,27 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app
-    version="4.0"
-    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-    xmlns:javaee="http://xmlns.jcp.org/xml/ns/javaee"
-    xmlns:xml="http://www.w3.org/XML/1998/namespace"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
-  <display-name>Archetype Created Web Application</display-name>
-  
-  
-      <servlet>
-        <!-- sevlet-name 名稱自訂 -->
-        <servlet-name>springMvc</servlet-name>
-        <!-- 固定 DispatcherServlet class -->
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <!-- server啟動的時候就載入 -->
-        <load-on-startup>1</load-on-startup>
-    </servlet>
+<web-app version="4.0"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:javaee="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+	<display-name>Archetype Created Web Application</display-name>
 
-    <servlet-mapping>
-        <!-- sevlet-name 要與上方一致 -->
-        <servlet-name>springMvc</servlet-name>
-        <!-- 指定哪些請求要被DispatcherServlet處理 -->
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
+
+	<servlet>
+		<!-- sevlet-name 名稱自訂 -->
+		<servlet-name>springMvc</servlet-name>
+		<!-- 固定 DispatcherServlet class -->
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- server啟動的時候就載入 -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<!-- sevlet-name 要與上方一致 -->
+		<servlet-name>springMvc</servlet-name>
+		<!-- 指定哪些請求要被DispatcherServlet處理 -->
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<!-- 處理亂碼問題，添加Filter -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<!-- 處理編碼的Filter，固定為org.springframework.web.filter.CharacterEncodingFilter -->
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+
+		<!-- 設定編碼的參數，UTP-8 -->
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<!-- 強制Reqest跟Response都要使用編碼設定 -->
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>
