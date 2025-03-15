@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-index
+
+<h1>1A2B 猜數字！</h1>
+
+<form action="guess" method="GET">
+	猜數字：<input type="text" name="guessNum" />
+	<button type="submit">猜答案</button>
+</form>
+
 </body>
 </html>
