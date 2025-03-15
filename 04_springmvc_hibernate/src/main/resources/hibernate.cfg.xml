@@ -40,7 +40,7 @@
         </property>
 
         <!-- List of XML mapping files -->
-        <!-- <mapping class="entity.ChatEntity" /> -->
+         <mapping class="com.course.entity.User" />
 
     </session-factory>
 </hibernate-configuration>
