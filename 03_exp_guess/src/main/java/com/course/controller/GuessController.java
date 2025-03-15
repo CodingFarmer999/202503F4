@@ -20,12 +20,19 @@ public class GuessController {
 	@GetMapping("/newGame")
 	public String newGame() {
 		System.out.println("newGame");
+		guessService.getAnswer();
 		return "index";
 	}
 	
 	@GetMapping("/guess")
 	public String guessAnswer() {
 		System.out.println("guess");
+		return "index";
+	}
+	
+	@GetMapping("/testSession")
+	public String testSession() {
+		guessService.testSession();
 		return "index";
 	}
 }
