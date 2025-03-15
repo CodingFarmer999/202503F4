@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +20,11 @@
 	<button type="submit">猜答案</button>
 </form>
 
-${history}
+<ul>
+    <c:forEach var="b1" items="${history}">
+        <li>${b1.guessNum} ${b1.resultDisplay}</li>
+    </c:forEach>
 
+</ul>
 </body>
 </html>
