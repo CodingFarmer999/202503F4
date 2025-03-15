@@ -50,10 +50,10 @@ public class GuessService {
 	 * @param guessNum
 	 * @return
 	 */
-	public ResultBean checkAnswer(String answer, String guessNum) {
+	public ResultBean checkAnswer(String guessNum) {
 		ResultBean result = new ResultBean();
 		
-		List<String> answerList = parseToList(answer);
+		List<String> answerList = parseToList(gameInfo.getAnswer());
 		List<String> guessList = parseToList(guessNum);
 		
 		Integer aCount = 0;
@@ -76,7 +76,12 @@ public class GuessService {
 		result.setaCount(aCount);
 		result.setbCount(bCount);
 		result.setResultDisplay(aCount + "A" + bCount + "B");
+		gameInfo.getGuessHistory().add(result);
 		return result;
+	}
+	
+	public List<ResultBean> getHistory() {
+		return gameInfo.getGuessHistory();
 	}
 	
 	/**
