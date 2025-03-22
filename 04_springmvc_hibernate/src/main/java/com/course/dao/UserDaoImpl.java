@@ -105,11 +105,19 @@ public class UserDaoImpl implements UserDao {
 	    	// Query<User> query = session.createQuery(sql, User.class);
 	    	
 	    	// NativeSQL
-	    	String nativeSql = "select * from USER u where u.username = ?1 and u.password = ?2";
-	    	Query<User> query = session.createNativeQuery(nativeSql, User.class);
+//	    	String nativeSql = "select * from USER u where u.username = ?1 and u.password = ?2";
+//	    	Query<User> query = session.createNativeQuery(nativeSql, User.class);
+//	    	
+//	    	query.setParameter(1, username);
+//	    	query.setParameter(2, password);
 	    	
-	    	query.setParameter(1, username);
-	    	query.setParameter(2, password);
+	    	
+	    	// Named
+	    	String nativeSql = "select * from USER u where u.username = :u1 and u.password = :p1";
+	    	Query<User> query = session.createNativeQuery(nativeSql, User.class);
+	    	query.setParameter("p1", password);
+	    	query.setParameter("u1", username);
+	    	
 	    	List<User> users = query.getResultList();
 	    	user = users.get(0);
 	    	
