@@ -1,9 +1,10 @@
 package com.course.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -96,10 +97,19 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User findByUsernameAndPassword(String username, String password) {
+		User user = null;
 	    try (Session session = connectionService.getSession();) {
-	    	String sql = "";
+	    	// JPQL
+	    	// String sql = "select * from user u where u.username = ? and u.password = ?";
+	    	String sql = "select u from User u where u.username = ?1 and u.password = ?2";
+	    	Query<User> query = session.createQuery(sql, User.class);
+	    	query.setParameter(1, username);
+	    	query.setParameter(2, password);
+	    	List<User> users = query.getResultList();
+	    	user = users.get(0);
+	    	
 	    }
-		return null;
+		return user;
 	}
 
 }

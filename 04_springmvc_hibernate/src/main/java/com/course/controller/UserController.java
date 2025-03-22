@@ -23,9 +23,9 @@ public class UserController {
 	public String login(@RequestParam("username") String username, @RequestParam("password") String password) {
 		boolean loginSuccess = userService.login(username, password);
 		if (loginSuccess) {
-			return "";
+			return "loginSuccess";
 		} else {
-			return "";
+			return "loginFail";
 		}
 	}
 	
