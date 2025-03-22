@@ -46,4 +46,9 @@ public class UserController {
 		model.addAttribute("users", userList);
 		return "userList";
 	}
+	
+	@GetMapping("/delete/{id}")
+	public String xxx() {
+		return "";
+	}
 }
