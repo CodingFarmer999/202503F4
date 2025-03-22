@@ -23,9 +23,8 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void addUser(String username, String password) {
-		// Entity
-		User user = new User(username, password);
+	public void addUser(User user) {
+
 		System.out.println("Add User");
 		
 //		Configuration configuration = new Configuration().configure();
@@ -53,6 +52,45 @@ public class UserDaoImpl implements UserDao {
 	    }
 
 
+		
+	}
+
+	@Override
+	public void delUser(User user) {
+	    //  Try With Resource
+	    try (Session session = connectionService.getSession();) {
+			// 開啟交易/事務
+			Transaction transaction = session.beginTransaction();
+
+			// 新增 Hibernate 5.0
+
+			
+			// Hibernate 6.0 以上
+
+
+			// 提交
+			transaction.commit();
+
+	    }
+		
+	}
+
+	@Override
+	public void updateUser(User user) {
+	    //  Try With Resource
+	    try (Session session = connectionService.getSession();) {
+			// 開啟交易/事務
+			Transaction transaction = session.beginTransaction();
+
+			// 新增 Hibernate 5.0
+
+			
+			// Hibernate 6.0 以上
+
+
+			// 提交
+			transaction.commit();
+	    }
 		
 	}
 

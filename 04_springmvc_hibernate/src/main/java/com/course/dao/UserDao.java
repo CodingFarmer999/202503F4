@@ -12,5 +12,9 @@ public interface UserDao {
 	 * @param username
 	 * @param password
 	 */
-	public void addUser(String username, String password);
+	public void addUser(User user);
+	
+	public void delUser(User user);
+	
+	public void updateUser(User user);
 }
