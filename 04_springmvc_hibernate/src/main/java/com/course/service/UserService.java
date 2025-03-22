@@ -1,5 +1,8 @@
 package com.course.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.course.dao.UserDao;
 import com.course.entity.User;
+import com.course.vo.UserVo;
 
 @Service
 public class UserService {
@@ -56,5 +60,44 @@ public class UserService {
 			userDao.delUser(user);
 		}
 		
+	}
+	
+	public User findByUsername(String username) {
+		return userDao.findByUsername(username);
+	}
+
+	/**
+	 * 更新使用者資料
+	 * 
+	 * @param userVo
+	 */
+	public void upateUser(UserVo userVo) {
+		User user = findByUsername(userVo.getUsername());
+
+		if (userVo.getPassword() != null && !userVo.getPassword().isBlank()) {
+			user.setPassword(userVo.getPassword());
+		}
+
+		if (userVo.getEmail() != null && !userVo.getEmail().isBlank()) {
+			user.setEmail(userVo.getEmail());
+		}
+
+		if (userVo.getBirthDay() != null && !userVo.getBirthDay().isBlank()) {
+			user.setBirthDay(parseDate(userVo.getBirthDay()));
+		}
+
+		userDao.updateUser(user);
+	}
+	
+	private Date parseDate(String dateStr) {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = null;
+		try {
+			date = formatter.parse(dateStr);
+			System.out.println("Parsed Date: " + date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return date;
 	}
 }

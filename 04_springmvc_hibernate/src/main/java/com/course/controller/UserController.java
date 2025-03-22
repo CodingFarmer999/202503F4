@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.course.entity.User;
 import com.course.service.UserService;
+import com.course.vo.UserVo;
 
 @Controller
 public class UserController {
@@ -61,5 +62,13 @@ public class UserController {
 		model.addAttribute("user", user);
 		
 		return "updateUser";
+	}
+	
+	@PostMapping("/update")
+	public String updateUser(UserVo userVo) {
+
+		System.out.println(userVo);
+		userService.upateUser(userVo);
+		 return "redirect:/toUserList"; 
 	}
 }
