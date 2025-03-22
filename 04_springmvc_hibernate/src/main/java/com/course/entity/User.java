@@ -1,5 +1,7 @@
 package com.course.entity;
 
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,6 +22,12 @@ public class User {
 	
 	@Column
 	private String password;
+	
+	@Column
+	private String email;
+	
+	@Column(name = "birth_day")
+	private Date birthDay;
 
 	public User() {
 		
