@@ -101,8 +101,13 @@ public class UserDaoImpl implements UserDao {
 	    try (Session session = connectionService.getSession();) {
 	    	// JPQL
 	    	// String sql = "select * from user u where u.username = ? and u.password = ?";
-	    	String sql = "select u from User u where u.username = ?1 and u.password = ?2";
-	    	Query<User> query = session.createQuery(sql, User.class);
+	    	// String sql = "select u from User u where u.username = ?1 and u.password = ?2";
+	    	// Query<User> query = session.createQuery(sql, User.class);
+	    	
+	    	// NativeSQL
+	    	String nativeSql = "select * from USER u where u.username = ?1 and u.password = ?2";
+	    	Query<User> query = session.createNativeQuery(nativeSql, User.class);
+	    	
 	    	query.setParameter(1, username);
 	    	query.setParameter(2, password);
 	    	List<User> users = query.getResultList();
