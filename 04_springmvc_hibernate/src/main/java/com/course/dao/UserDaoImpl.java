@@ -38,8 +38,13 @@ public class UserDaoImpl implements UserDao {
 	    try (Session session = connectionService.getSession();) {
 			// 開啟交易/事務
 			Transaction transaction = session.beginTransaction();
-			// 新增
-			session.save(user);
+
+			// 新增 Hibernate 5.0
+			// session.save(user);
+			
+			// Hibernate 6.0 以上
+			session.persist(user);
+
 			// 提交
 			transaction.commit();
 			
