@@ -1,5 +1,6 @@
 package com.course.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -134,6 +135,20 @@ public class UserDaoImpl implements UserDao {
 	    	}
 	    	
 	    }
+		return user;
+	}
+
+	@Override
+	public List<User> findAll() {
+		// NullPointerExcepter
+		List<User> user = new ArrayList<>();
+		try (Session session = connectionService.getSession();) {
+			// 呼叫DB
+	    	 String sql = "select u from User u";
+	    	 Query<User> query = session.createQuery(sql, User.class);
+	    	 user = query.getResultList();
+		}
+
 		return user;
 	}
 

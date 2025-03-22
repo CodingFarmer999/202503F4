@@ -1,5 +1,7 @@
 package com.course.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,5 +34,9 @@ public class UserService {
 		// Entity
 		User user = new User(username, password);
 		userDao.addUser(user);
+	}
+	
+	public List<User> findAllUser() {
+		return userDao.findAll();
 	}
 }
