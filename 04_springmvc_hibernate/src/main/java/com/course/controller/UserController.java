@@ -54,4 +54,12 @@ public class UserController {
 
 		return "redirect:/toUserList";
 	}
+	
+	@GetMapping("/toUpdate/{id}")
+	public String toUpdatePage(@PathVariable("id") Integer id, Model model) {
+		User user = userService.findById(id);
+		model.addAttribute("user", user);
+		
+		return "updateUser";
+	}
 }
