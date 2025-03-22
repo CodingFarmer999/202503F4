@@ -19,6 +19,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void addUser(String username, String password) {
+		// Entity
 		User user = new User(username, password);
 		System.out.println("Add User");
 		
