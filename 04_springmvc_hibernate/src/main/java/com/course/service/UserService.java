@@ -50,6 +50,11 @@ public class UserService {
 	 * @param id
 	 */
 	public void deleteByUserId(Integer id) {
-
+		User user = findById(id);
+		
+		if (user != null) {
+			userDao.delUser(user);
+		}
+		
 	}
 }
