@@ -74,6 +74,7 @@ public class UserService {
 	public void upateUser(UserVo userVo) {
 		User user = findByUsername(userVo.getUsername());
 
+		// "", " "
 		if (userVo.getPassword() != null && !userVo.getPassword().isBlank()) {
 			user.setPassword(userVo.getPassword());
 		}
