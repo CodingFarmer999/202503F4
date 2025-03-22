@@ -62,11 +62,11 @@ public class UserDaoImpl implements UserDao {
 			// 開啟交易/事務
 			Transaction transaction = session.beginTransaction();
 
-			// 新增 Hibernate 5.0
-
+			// Hibernate 5.0
+			//session.delete(user);
 			
 			// Hibernate 6.0 以上
-
+			session.remove(user);
 
 			// 提交
 			transaction.commit();
@@ -82,11 +82,11 @@ public class UserDaoImpl implements UserDao {
 			// 開啟交易/事務
 			Transaction transaction = session.beginTransaction();
 
-			// 新增 Hibernate 5.0
-
+			// Hibernate 5.0
+			//session.update(user);
 			
 			// Hibernate 6.0 以上
-
+			session.merge(user);
 
 			// 提交
 			transaction.commit();
