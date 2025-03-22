@@ -152,4 +152,20 @@ public class UserDaoImpl implements UserDao {
 		return user;
 	}
 
+	@Override
+	public User findById(Integer id) {
+		User user = null;
+		try (Session session = connectionService.getSession();) {
+			String sql = "select * from User u where u.id = :id";
+			Query<User> query = session.createNativeQuery(sql, User.class);
+			query.setParameter("id", id);
+			user = query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return user;
+	}
+
 }

@@ -39,4 +39,17 @@ public class UserService {
 	public List<User> findAllUser() {
 		return userDao.findAll();
 	}
+	
+	public User findById(Integer id) {
+		return userDao.findById(id);
+	}
+	
+	/**
+	 * 透過 ID 刪除使用者
+	 * 
+	 * @param id
+	 */
+	public void deleteByUserId(Integer id) {
+
+	}
 }

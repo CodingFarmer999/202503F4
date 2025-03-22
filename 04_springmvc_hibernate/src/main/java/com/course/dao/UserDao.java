@@ -14,6 +14,13 @@ public interface UserDao {
 	public List<User> findAll();
 	
 	/**
+	 * 透過ID取得使用者
+	 * @param id
+	 * @return
+	 */
+	User findById(Integer id);
+	
+	/**
 	 * 透過UserName取得使用者
 	 * @param username
 	 * @return
