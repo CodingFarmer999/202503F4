@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 import com.course.entity.User;
 import com.course.service.ConnectionService;
 
+import jakarta.persistence.NoResultException;
+
 @Repository
 public class UserDaoImpl implements UserDao {
 
@@ -19,8 +21,19 @@ public class UserDaoImpl implements UserDao {
 	
 	@Override
 	public User findByUsername(String username) {
-		// 呼叫DB
-		return null;
+		User user = null;
+		try (Session session = connectionService.getSession();) {
+			// 呼叫DB
+	    	 String sql = "select u from User u where u.username = ?1";
+	    	 Query<User> query = session.createQuery(sql, User.class);
+	    	 query.setParameter(1, username);
+	    	 user = query.getSingleResult();
+		} catch (NoResultException ex) {
+			ex.printStackTrace();
+			System.out.println("查無資料");
+		}
+
+		return user;
 	}
 
 	@Override
@@ -51,9 +64,6 @@ public class UserDaoImpl implements UserDao {
 			// 關閉連線
 			// session.close();
 	    }
-
-
-		
 	}
 
 	@Override
@@ -112,14 +122,16 @@ public class UserDaoImpl implements UserDao {
 //	    	query.setParameter(2, password);
 	    	
 	    	
-	    	// Named
+	    	// Named Parameter
 	    	String nativeSql = "select * from USER u where u.username = :u1 and u.password = :p1";
 	    	Query<User> query = session.createNativeQuery(nativeSql, User.class);
 	    	query.setParameter("p1", password);
 	    	query.setParameter("u1", username);
 	    	
 	    	List<User> users = query.getResultList();
-	    	user = users.get(0);
+	    	if (users != null && !users.isEmpty()) {
+	    		user = users.get(0);
+	    	}
 	    	
 	    }
 		return user;
