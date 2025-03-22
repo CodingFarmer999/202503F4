@@ -24,4 +24,11 @@ public class UserController {
 		userService.addUser(username, password);
 		return "";
 	}
+	
+	@PostMapping("/register")
+	public String register(@RequestParam("username") String username, @RequestParam("password") String password) {
+		
+		userService.addUser(username, password);
+		return "registerSuccess";
+	}
 }

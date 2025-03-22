@@ -14,6 +14,7 @@ public class UserService {
 	
 	public void addUser(String username, String password) {
 		// 如果有邏輯的話，寫在這
+		// 
 		
 		// Entity
 		User user = new User(username, password);
