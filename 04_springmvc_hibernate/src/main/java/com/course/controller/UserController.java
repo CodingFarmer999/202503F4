@@ -40,7 +40,7 @@ public class UserController {
 		return "registerSuccess";
 	}
 	
-	@GetMapping("/userList")
+	@GetMapping("/toUserList")
 	public String findAllUser(Model model) {
 		List<User> userList = userService.findAllUser();
 		model.addAttribute("users", userList);
