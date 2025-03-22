@@ -21,8 +21,12 @@ public class UserController {
 	
 	@PostMapping("/login")
 	public String login(@RequestParam("username") String username, @RequestParam("password") String password) {
-		userService.addUser(username, password);
-		return "";
+		boolean loginSuccess = userService.login(username, password);
+		if (loginSuccess) {
+			return "";
+		} else {
+			return "";
+		}
 	}
 	
 	@PostMapping("/register")

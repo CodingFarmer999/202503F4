@@ -7,6 +7,8 @@ public interface UserDao {
 	// 透過UserName取得使用者
 	public User findByUsername(String username);
 	
+	public User findByUsernameAndPassword(String username, String password);
+	
 	/**
 	 * 新增使用者
 	 * @param username

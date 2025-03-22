@@ -94,4 +94,12 @@ public class UserDaoImpl implements UserDao {
 		
 	}
 
+	@Override
+	public User findByUsernameAndPassword(String username, String password) {
+	    try (Session session = connectionService.getSession();) {
+	    	String sql = "";
+	    }
+		return null;
+	}
+
 }
