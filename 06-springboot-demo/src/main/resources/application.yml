@@ -1,2 +1,6 @@
 server:
   port: 9090
+# logging.level.[類別的package]=[級別]
+logging:
+  level:
+    com.course: debug
