@@ -3,4 +3,8 @@ server:
 # logging.level.[類別的package]=[級別]
 logging:
   level:
-    com.course: debug
+    com.course: trace
+  file:
+    # 在指定路徑當中，新增日誌檔，如不指定預設為專案目錄
+    #name: springboot.log
+    path: C:\Users\student\log
