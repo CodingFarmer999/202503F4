@@ -15,4 +15,6 @@ public interface TodoDao {
 	List<TodoDto> findAll();
 	
 	List<TodoDto> findByTitle(String title);
+	
+	List<TodoDto> findByTitle2(String title, String temp);
 }
