@@ -28,4 +28,10 @@ public class TodoController {
 		todoService.findAll();
 		return "index";
 	}
+	
+	@GetMapping("/title")
+	public String findByTitle() {
+		todoService.findByTitle();
+		return "index";
+	}
 }

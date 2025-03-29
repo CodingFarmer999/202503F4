@@ -27,4 +27,9 @@ public class TodoService {
 		List<TodoDto> dtos = todoDao.findAll();
 		return dtos;
 	}
+	
+	public List<TodoDto> findByTitle() {
+		List<TodoDto> dtos = todoDao.findByTitle("菜");
+		return dtos;
+	}
 }

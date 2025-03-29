@@ -61,8 +61,23 @@ public class TodoDaoImpl implements TodoDao {
 
 	@Override
 	public List<TodoDto> findByTitle(String title) {
-		// TODO Auto-generated method stub
-		return null;
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(" SELECT ");
+		sb.append(" * ");
+		sb.append(" FROM TODO ");
+		sb.append(" WHERE TITLE LIKE ? ");
+		RowMapper<TodoDto> rowMapper = (rs, num) -> {
+	        TodoDto dto = new TodoDto();
+	        dto.setId(rs.getLong("id"));
+	        dto.setTitle(rs.getString("title"));
+	        dto.setDueDate(rs.getDate("dueDate"));
+	        dto.setStatus(rs.getInt("status"));
+	        return dto;
+		};
+		List<TodoDto> dtoList = jdbcTemplate.query(sb.toString(), rowMapper, "%" + title + "%");
+		
+		return dtoList;
 	}
 
 }
