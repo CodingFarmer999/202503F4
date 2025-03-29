@@ -1,5 +1,7 @@
 package com.course.dao;
 
+import java.util.List;
+
 import com.course.model.TodoDto;
 
 public interface TodoDao {
@@ -9,4 +11,8 @@ public interface TodoDao {
 	void update(TodoDto todoDto);
 	
 	void delete(Long id);
+	
+	List<TodoDto> findAll();
+	
+	List<TodoDto> findByTitle(String title);
 }

@@ -1,5 +1,7 @@
 package com.course.dao.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -31,6 +33,18 @@ public class TodoDaoImpl implements TodoDao {
 		String sql ="DELETE FROM TODO WHERE ID = ?";
 		jdbcTemplate.update(sql, id);
 		
+	}
+
+	@Override
+	public List<TodoDto> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<TodoDto> findByTitle(String title) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
