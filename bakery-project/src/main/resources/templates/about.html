@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>甜 時 ． Sweet</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/about.css" rel="stylesheet" type="text/css" />
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<!-- 共用 navbar-->
+	<div th:replace="~{fragments/navbar :: navbar}"></div>
+    <img src="images/banner.jpg" class="img-responsive" id="banner">
+    <div id="content" class="container">
+        <div class="row text-center">
+            <div class="col-md-6 col-sm-12 text">
+                <h3 class="title">| 關於我們 <small>About Us</small></h3>
+                <p>吃一口讓你宛如置身巴黎街頭，每一口都是滿滿的幸福。</p>
+                <ul class="list">
+                    <li>嚴選獨家法式香草佐料</li>
+                    <li>時尚、純手工製作</li>
+                    <li>全台第一家上市總店</li>
+                    <li>採用台灣當季新鮮特產水果</li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-sm-12 pic">
+                <img src="images/cupcake.jpg" class="img-responsive">
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-6 col-sm-12 pic">
+                <img src="images/cupcake2.jpg" class="img-responsive">
+            </div>
+            <div class="col-md-6 col-sm-12 text">
+                <h3 class="title">| 店家資訊 <small>Store Information</small></h3>
+                <ul class="list">
+                    <li>營業時間：12:00p.m. ~ 20:00p.m.</li>
+                    <li>電話：02-12345678</li>
+                    <li>地址：台中市中區美術路二段102號</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+
+</html>

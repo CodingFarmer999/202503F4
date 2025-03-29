@@ -1,0 +1,32 @@
+body {
+    font-family: Microsoft JhengHei;
+}
+
+#banner {
+    margin-top: 50px;
+}
+
+.title {
+    color: #FA8072;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.item {
+    margin-bottom: 30px;
+}
+
+.item p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    height: 50px;
+    text-align: center;
+    font-size: 10px;
+    padding-top: 20px;
+}

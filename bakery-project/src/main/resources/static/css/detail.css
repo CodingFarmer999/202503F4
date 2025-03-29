@@ -1,0 +1,36 @@
+body {
+    font-family: Microsoft JhengHei;
+}
+
+#banner {
+    margin-top: 50px;
+}
+
+.title {
+    color: #FA8072;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #6d6d6d;
+    font-weight: bold;
+}
+
+span {
+    margin-right: 5px;
+}
+.col-md-8 img{
+    width: 100%;
+}
+
+footer {
+    background-color: #000;
+    color: #fff;
+    height: 50px;
+    text-align: center;
+    font-size: 10px;
+    font-size: 10px;
+    padding-top: 20px;
+    margin-top: 20px;
+}
