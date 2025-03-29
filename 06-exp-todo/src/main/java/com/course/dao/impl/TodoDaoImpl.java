@@ -29,6 +29,7 @@ public class TodoDaoImpl implements TodoDao {
 		
 		StringBuilder sb = new StringBuilder();
 		sb.append("SELECT ");
+		// sb.append("*");
 		sb.append("T.ID, ");
 		sb.append("T.TITLE, ");
 		sb.append("T.DUE_DATE, ");
