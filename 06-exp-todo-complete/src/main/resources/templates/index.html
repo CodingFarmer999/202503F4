@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>待辦事項</title>
+</head>
+<body>
+<h1 th:text="${title}">待辦事項</h1>
+
+<div>
+	<img th:src="@{img/todo{id}.jpg (id=${2})}" width="800px"/>
+</div>
+<a th:href="@{/toAddPage}">新增</a>
+<hr/>
+
+<form th:action="@{/search}" th:object="${condition}" method="GET">
+	標題關鍵字：<input type="text" id="title" th:field="*{title}" /><br/>
+	<input type="submit" value="搜尋"/>
+</form>
+
+<table border="1">
+	<tr>
+		<td>使用者</td>
+		<td>標題</td>
+		<td>到期日</td>
+		<td>狀態</td>
+		<td>備註</td>
+		<td>功能</td>
+	</tr>
+	
+	<tr th:each="todo, stat: ${todoList}">
+		<td th:text="${todo.username}">使用者</td>
+		<td th:text="${todo.title}">標題</td>
+		<td th:text="${todo.dueDate}">到期日</td>
+		<td th:text="${todo.statusDisp}">狀態</td>
+		<td th:text="${todo.memo}">備註</td>
+		<td>
+			<a th:href="@{/toEditPage/{id} (id=${todo.id})}">編輯</a>
+			<a th:href="@{/delete/{id} (id=${todo.id})}">刪除</a>
+			<p th:if="${stat.count} == 1">第一筆</p>
+		</td>
+	</tr>
+</table>
+
+<div th:include="~{common :: footer}"></div>
+<div th:replace="~{common :: footer}"></div>
+</body>
+</html>

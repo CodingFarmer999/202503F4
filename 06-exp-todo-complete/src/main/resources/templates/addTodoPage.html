@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>新增代辦事項</title>
+</head>
+<body>
+<h1>新增代辦事項</h1>
+
+<form th:action="@{/todo}" th:object="${todo}" method="POST">
+    <div>
+        <label for="title">標題:</label>
+        <input type="text" id="title" th:field="*{title}" />
+        <span class="error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+    </div>
+    <div>
+        <label for="dueDate">到期日:</label>
+        <input type="date" id="dueDate" th:field="*{dueDate}" />
+        <span class="error" th:if="${#fields.hasErrors('dueDate')}" th:errors="*{dueDate}"></span>
+    </div>
+    
+    <div>
+        <label for="memo">備註:</label>
+        <input type="text" id="memo" th:field="*{memo}" />
+    </div>
+    <div>
+        <button type="submit">新增待辦事項</button>
+    </div>
+</form>
+<div th:replace="~{common :: footer}"></div>
+</body>
+</html>
