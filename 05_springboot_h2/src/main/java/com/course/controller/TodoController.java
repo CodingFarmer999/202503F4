@@ -22,4 +22,10 @@ public class TodoController {
 		todoService.addTodo();
 		return "index";
 	}
+	
+	@GetMapping("/all")
+	public String findAllTodo() {
+		todoService.findAll();
+		return "index";
+	}
 }
