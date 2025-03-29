@@ -1,9 +1,12 @@
 package com.course.dao.impl;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.course.dao.TodoDao;
@@ -37,8 +40,23 @@ public class TodoDaoImpl implements TodoDao {
 
 	@Override
 	public List<TodoDto> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "SELECT * FROM TODO";
+		
+		RowMapper<TodoDto> rowMapper = new RowMapper<>() {
+
+			@Override
+			public TodoDto mapRow(ResultSet rs, int rowNum) throws SQLException {
+				TodoDto dto = new TodoDto();
+				dto.setId(rs.getLong("ID"));
+				dto.setTitle(rs.getString("TITLE"));
+				dto.setDueDate(rs.getDate("DUEDATE"));
+				dto.setStatus(rs.getInt("STATUS"));
+				
+				return dto;
+			}
+		};
+		List<TodoDto> dtoList = jdbcTemplate.query(sql, rowMapper);
+		return dtoList;
 	}
 
 	@Override
