@@ -21,13 +21,15 @@ public class TodoDaoImpl implements TodoDao {
 
 	@Override
 	public void update(TodoDto todoDto) {
-		// TODO Auto-generated method stub
+		String sql ="UPDATE SET TITLE = ?, DUEDATE = ?, STATUS = ? WHERE ID = ?";
+		jdbcTemplate.update(sql, todoDto.getTitle(), todoDto.getDueDate(), todoDto.getStatus(), todoDto.getId());
 		
 	}
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
+		String sql ="DELETE FROM TODO WHERE ID = ?";
+		jdbcTemplate.update(sql, id);
 		
 	}
 
