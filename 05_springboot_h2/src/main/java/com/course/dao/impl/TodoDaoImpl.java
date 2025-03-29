@@ -15,8 +15,8 @@ public class TodoDaoImpl implements TodoDao {
 	
 	@Override
 	public void add(TodoDto todoDto) {
-		// TODO Auto-generated method stub
-		
+		String sql = "INSERT INTO TODO (TITLE, DUEDATE, STATUS) VALUES (?, ?, ?)";
+		jdbcTemplate.update(sql, todoDto.getTitle(), todoDto.getDueDate(), todoDto.getStatus());
 	}
 
 	@Override
