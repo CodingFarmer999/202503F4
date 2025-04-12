@@ -116,7 +116,7 @@ public class TodoDaoImpl implements TodoDao {
 		sb.append("T.MEMO, ");
 		sb.append("U.USERNAME ");
 		sb.append("FROM TODO T ");
-		sb.append("JOIN USERS U ON U.ID = T.USERID ");
+		sb.append("JOIN USER U ON U.ID = T.USERID ");
 		sb.append("WHERE T.ID IS NOT NULL ");
 		if (condition.getTitle() != null && !condition.getTitle().isBlank()) {
 			sb.append("AND T.TITLE LIKE ? ");
