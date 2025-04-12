@@ -3,6 +3,8 @@ package com.course.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -69,4 +71,20 @@ public class RestfulController {
 	}
 	
 	
+	@GetMapping("/ok")
+	public ResponseEntity<String> ok() {
+	    return ResponseEntity.ok("OK");
+	}
+	
+	@GetMapping("/okUser")
+	public ResponseEntity<User> okUser() {
+	    return ResponseEntity.ok(new User("Kitty", "aaa"));
+	}
+	
+	@GetMapping("/errorUser")
+	public ResponseEntity<User> errorUser() {
+		
+	    return new ResponseEntity<>(new User("Kitty", "aaa"), HttpStatus.NOT_FOUND);
+	}
 }
+	
