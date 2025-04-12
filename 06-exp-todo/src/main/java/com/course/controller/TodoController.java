@@ -14,6 +14,6 @@ public class TodoController {
 	
 	@ModelAttribute("title")
 	public String title() {
-		return "待辦事項XXXXYYYY";
+		return "<script>alert('XXXXXX')</script>";
 	}
 }
