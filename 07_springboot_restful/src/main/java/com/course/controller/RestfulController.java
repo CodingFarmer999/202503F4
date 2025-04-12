@@ -4,25 +4,38 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.course.model.User;
+
+import io.swagger.v3.oas.annotations.Operation;
 
 //@Controller
 //@ResponseBody
 @RestController
 public class RestfulController {
 
+	@Operation(tags = { "HOME" })
 	@GetMapping("/home")
 	public String home() {
 		return "home";
 	}
 	
+	@Operation(summary = "取得使用者", description = "詳細描述", tags = { "USER-API" })
 	@GetMapping("/users")
 	public List<User> getAllUser() {
 		User user1 = new User("Kitty", "aaa");
 		User user2 = new User("Snoopy", "bbb");
 		User user3 = new User("Bird", "ccc");
 		return Arrays.asList(user1, user2, user3);
+	}
+	
+	@Operation(summary = "新增使用者", description = "新增使用者", tags = { "USER-API" })
+	@PostMapping("/user")
+	public User addUser(User user) {
+		System.out.println("user: " + user);
+		// TODO: 新增使用者，自己做
+		return user;
 	}
 }
