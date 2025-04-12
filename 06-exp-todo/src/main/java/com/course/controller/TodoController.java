@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.course.model.TodoVo;
 import com.course.service.TodoService;
@@ -32,5 +33,21 @@ public class TodoController {
 	@GetMapping("/toAddPage")
 	public String toAddPage(@ModelAttribute("todo") TodoVo todoVo) {
 		return "addTodo";
+	}
+	
+	/**
+	 * 新增待辦事項
+	 * @param todoVo
+	 * @return
+	 */
+	@PostMapping("/todo")
+	public String add(@ModelAttribute("todo") TodoVo todoVo) {
+		System.out.println(todoVo);
+
+		todoService.addTodo(todoVo);
+
+
+		// 新增完畢後，轉導至首頁，避免refresh重送新增
+		return "redirect:/";
 	}
 }

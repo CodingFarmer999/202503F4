@@ -42,4 +42,19 @@ public class TodoService {
 		return dtoList.stream().map(dto -> helper.convertToVo(dto)).collect(Collectors.toList());
 	}
 	
+
+	/**
+	 * 新增待辦事項
+	 * @param todoVo
+	 */
+	public void addTodo(TodoVo todoVo) {
+		
+		// 新增代辦事項，狀態固定為0(未完成)
+		todoVo.setStatus("0");
+		
+		// 轉換 Vo -> Dto
+		TodoDto dto = helper.convertToDto(todoVo);
+		todoDao.add(dto);
+	}
+	
 }
