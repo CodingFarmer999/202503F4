@@ -75,4 +75,12 @@ public class TodoController {
 		model.addAttribute("todo", vo);
 		return "editTodo";
 	}
+	
+
+	@PostMapping("/editTodo")
+	public String editTodo(@ModelAttribute("todo") TodoVo todoVo) {
+		System.out.println(todoVo);
+		todoService.updateTodo(todoVo);
+		return "redirect:/";
+	}
 }

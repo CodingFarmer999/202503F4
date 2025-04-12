@@ -75,4 +75,15 @@ public class TodoService {
 		return helper.convertToVo(dto);
 	}
 	
+
+	/**
+	 * 更新待辦事項
+	 * @param todoVo
+	 */
+	public void updateTodo(TodoVo todoVo) {
+		TodoDto dto = helper.convertToDto(todoVo);
+		todoDao.update(dto);
+	}
+
+	
 }
