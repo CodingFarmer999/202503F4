@@ -4,7 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.course.model.User;
@@ -14,6 +17,7 @@ import io.swagger.v3.oas.annotations.Operation;
 //@Controller
 //@ResponseBody
 @RestController
+@RequestMapping("/rest")
 public class RestfulController {
 
 	@Operation(tags = { "HOME" })
@@ -38,4 +42,22 @@ public class RestfulController {
 		// TODO: 新增使用者，自己做
 		return user;
 	}
+	
+	@GetMapping("/user/{id}/age/{age}")
+	public User searchUser(@PathVariable Integer id, @PathVariable Integer age) {
+		System.out.println(id);
+		System.out.println(age);
+		User user1 = new User("Kitty", "aaa");
+		return user1;
+	}
+	
+	@GetMapping("/user2/")
+	public User searchUser2(@RequestParam Integer id, @RequestParam Integer age) {
+		System.out.println(id);
+		System.out.println(age);
+		User user1 = new User("Kitty", "aaa");
+		return user1;
+	}
+	
+	
 }
