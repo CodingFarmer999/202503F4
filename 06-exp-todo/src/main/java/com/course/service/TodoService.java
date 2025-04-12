@@ -57,4 +57,12 @@ public class TodoService {
 		todoDao.add(dto);
 	}
 	
+	/**
+	 * 刪除待辦事項
+	 * @param id
+	 */
+	public void deleteTodo(Long id) {
+		todoDao.delete(id);
+	}
+	
 }

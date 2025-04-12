@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.course.model.TodoVo;
@@ -48,6 +49,18 @@ public class TodoController {
 
 
 		// 新增完畢後，轉導至首頁，避免refresh重送新增
+		return "redirect:/";
+	}
+	
+	/**
+	 * 刪除待辦事項
+	 * @param id
+	 * @return
+	 */
+	@GetMapping("/delete/{id}")
+	public String deleteTodo(@PathVariable Long id) {
+		todoService.deleteTodo(id);
+		// 刪除完畢後，轉導至首頁，避免refresh重送新增
 		return "redirect:/";
 	}
 }

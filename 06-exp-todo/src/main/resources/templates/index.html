@@ -23,7 +23,10 @@
 		<td th:text="${todo.title}">標題</td>
 		<td th:text="${todo.dueDate}">到期日</td>
 		<td th:text="${todo.memo}">狀態</td>
-		<td>功能</td>
+		<td>
+<!-- 			<a th:href="@{/toEditPage/{id} (id=${todo.id})}">編輯</a> -->
+			<a th:href="@{/delete/{id} (id=${todo.id})}">刪除</a>
+		</td>
 	</tr>
 	
 	
