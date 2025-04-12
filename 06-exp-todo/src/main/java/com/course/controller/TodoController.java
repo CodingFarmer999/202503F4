@@ -63,4 +63,16 @@ public class TodoController {
 		// 刪除完畢後，轉導至首頁，避免refresh重送新增
 		return "redirect:/";
 	}
+	
+	/**
+	 * 轉導至編輯頁
+	 * @param id
+	 * @return
+	 */
+	@GetMapping("/toEditPage/{id}")
+	public String toEditPage(@PathVariable Long id, Model model) {
+		TodoVo vo = todoService.getTodoById(id);
+		model.addAttribute("todo", vo);
+		return "editTodo";
+	}
 }
