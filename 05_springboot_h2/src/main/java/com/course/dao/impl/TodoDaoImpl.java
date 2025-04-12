@@ -87,7 +87,16 @@ public class TodoDaoImpl implements TodoDao {
 		sb.append(" SELECT ");
 		sb.append(" * ");
 		sb.append(" FROM TODO ");
-		sb.append(" WHERE TITLE LIKE ? ");
+		sb.append(" WHERE ID IS NOT NULL ");
+		
+		if (title != null && !title.isBlank()) {
+			sb.append("AND TITLE = ? ");
+		}
+		
+		if (temp != null && !temp.isBlank()) {
+			sb.append("AND TEMP = ? ");
+		}
+		
 		RowMapper<TodoDto> rowMapper = (rs, num) -> {
 	        TodoDto dto = new TodoDto();
 	        dto.setId(rs.getLong("id"));
