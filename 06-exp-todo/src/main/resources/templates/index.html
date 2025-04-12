@@ -8,6 +8,9 @@
 <p th:text="${title}">代辦事項</p>
 <!-- <p th:utext="${title}">代辦事項</p> -->
 
+<div>
+	<img th:src="@{img/todo{id}.jpg (id=${2})}" width="800px"/>
+</div>
 <a th:href="@{/toAddPage}" href="/toAddPage">新增</a>
 
 <!-- <a href="/addTodo2.html">新增</a> -->
