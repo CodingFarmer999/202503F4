@@ -15,6 +15,15 @@
 		<td>狀態</td>
 		<td>功能</td>
 	</tr>
+	
+	<tr th:each="todo :${todoList}">
+		<td th:text="${todo.title}">標題</td>
+		<td th:text="${todo.dueDate}">到期日</td>
+		<td th:text="${todo.memo}">狀態</td>
+		<td>功能</td>
+	</tr>
+	
+	
 </table>
 
 <hr/>
