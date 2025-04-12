@@ -28,4 +28,9 @@ public class TodoController {
 	public String title() {
 		return "<script>alert('XXXXXX')</script>";
 	}
+	
+	@GetMapping("/toAddPage")
+	public String toAddPage(@ModelAttribute("todo") TodoVo todoVo) {
+		return "addTodo";
+	}
 }
