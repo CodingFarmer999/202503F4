@@ -20,7 +20,8 @@ public class TodoService {
 	}
 	
 	public TodoEntity addTodo(TodoEntity entity) {
-		return todoRepository.save(entity);
+		TodoEntity todo = todoRepository.save(entity);
+		return todo;
 	}
 	
 	public void deleteAll() {
@@ -46,6 +47,10 @@ public class TodoService {
 		TodoEntity todo2 = todoRepository.findById(entity.getId()).orElse(null);
 		todo2.setTitle(entity.getTitle());
 		return todoRepository.save(todo2);
+	}
+	
+	public List<TodoEntity> getByTitle(String title) {
+		return todoRepository.findByTitle(title);
 	}
 
 }
