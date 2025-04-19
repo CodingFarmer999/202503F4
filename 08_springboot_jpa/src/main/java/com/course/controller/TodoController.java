@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.course.entity.TodoEntity;
 import com.course.service.TodoService;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 @RestController
 public class TodoController {
 
@@ -53,4 +55,12 @@ public class TodoController {
 	public List<TodoEntity> getByTitle(@PathVariable String title) {
 		return todoService.getByTitle(title);
 	}
+	
+	@Operation(summary = "找出未完成的待辦事項")
+	@GetMapping("/todoUnComplete")
+	public List<TodoEntity> getByTitleAndUnComplete(String title, Integer status) {
+		return todoService.getByTitleAndUnComplete(title, status);
+	}
+	
+	
 }

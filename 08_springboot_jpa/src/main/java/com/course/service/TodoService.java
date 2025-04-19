@@ -52,5 +52,9 @@ public class TodoService {
 	public List<TodoEntity> getByTitle(String title) {
 		return todoRepository.findByTitle(title);
 	}
+	
+	public List<TodoEntity> getByTitleAndUnComplete(String title, Integer status) {
+		return todoRepository.findByTitleAndStatus(title, status);
+	}
 
 }
