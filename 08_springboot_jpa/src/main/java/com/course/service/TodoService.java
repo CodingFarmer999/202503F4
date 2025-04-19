@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import com.course.entity.TodoEntity;
 import com.course.repository.TodoRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class TodoService {
 
@@ -110,5 +112,10 @@ public class TodoService {
 	
 	public List<TodoEntity> findByCondition(String title, Integer status) {
 		return todoRepository.findByCondition(title, status);
+	}
+	
+	@Transactional
+	public Integer updateQuery(Long id, String title) {
+		return todoRepository.updateTodo(id, title);
 	}
 }

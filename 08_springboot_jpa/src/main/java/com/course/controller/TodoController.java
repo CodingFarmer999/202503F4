@@ -107,4 +107,10 @@ public class TodoController {
 		return todoService.findByCondition(title, status);
 	}
 	
+	@Operation(summary = "更新待辦事項Title", tags = "@Query")
+	@PostMapping("/update/todo")
+	public Integer updateQuery(Long id, String title) {
+		return todoService.updateQuery(id, title);
+	}
+	
 }
