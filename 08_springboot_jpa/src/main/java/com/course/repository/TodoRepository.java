@@ -18,4 +18,14 @@ public interface TodoRepository extends JpaRepository<TodoEntity, Long> {
 	
 	// SQL : select * from todo where title = ? and status = ?
 	List<TodoEntity> findByTitleAndStatus(String title, Integer status);
+	
+	// SQL語句：select * from todo where due_date > ?
+	List<TodoEntity> findByDueDateGreaterThan(Date dueDate);
+	
+	// SQL語句：select * from todo where due_date between ? and ?
+	List<TodoEntity> findByDueDateBetween(Date startDate, Date endDate);
+	
+	// SQL語句：select * from todo where title like ?
+	List<TodoEntity> findByTitleLike(String title);
+	
 }
