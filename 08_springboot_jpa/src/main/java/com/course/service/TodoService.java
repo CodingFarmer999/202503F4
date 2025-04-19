@@ -107,4 +107,8 @@ public class TodoService {
 		return todoRepository.countByStatus(status);
 	}
 
+	
+	public List<TodoEntity> findByCondition(String title, Integer status) {
+		return todoRepository.findByCondition(title, status);
+	}
 }

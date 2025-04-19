@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.course.entity.TodoEntity;
@@ -36,5 +37,9 @@ public interface TodoRepository extends JpaRepository<TodoEntity, Long> {
 	
 	// SQL語句：select count(*) from todo where status = ?;
 	Integer countByStatus(Integer status);
+	
+	@Query(value = "select t from TodoEntity t where t.title = ?1 and t.status = ?2")
+	List<TodoEntity> findByCondition(String title, Integer status);
+	
 	
 }
