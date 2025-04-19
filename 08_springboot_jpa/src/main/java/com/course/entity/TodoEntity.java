@@ -2,23 +2,36 @@ package com.course.entity;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "TODO")
 public class TodoEntity {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TODO_SEQ_GENERATOR")
+	@SequenceGenerator(name = "TODO_SEQ_GENERATOR", sequenceName = "TODO_SEQ", allocationSize = 1)
 	private Long id;
-	
+
+	@Column
 	private String title;
-	
+
+	@Column(name = "DUE_DATE")
 	private Date dueDate;
 	
+	@Column
 	private Integer status;
 	
+	@Column
 	private String memo;
 	
+	@Column
 	private Long userId;
 
 	public Long getId() {
@@ -68,5 +81,5 @@ public class TodoEntity {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-	
+
 }
