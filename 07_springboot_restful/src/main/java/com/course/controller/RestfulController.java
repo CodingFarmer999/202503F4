@@ -22,7 +22,7 @@ import io.swagger.v3.oas.annotations.Operation;
 //@ResponseBody
 @RestController
 @RequestMapping("/rest")
-@CrossOrigin("*")
+@CrossOrigin(value = {"http://127.0.0.1:5500", "http://127.0.0.1:3000"})
 public class RestfulController {
 
 	@Operation(tags = { "HOME" })
