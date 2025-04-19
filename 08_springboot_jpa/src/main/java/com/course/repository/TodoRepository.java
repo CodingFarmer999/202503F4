@@ -39,7 +39,8 @@ public interface TodoRepository extends JpaRepository<TodoEntity, Long> {
 	Integer countByStatus(Integer status);
 	
 //	@Query(value = "select t from TodoEntity t where t.title = ?1 and t.status = ?2")
-	@Query(value = "select t from TodoEntity t where t.status = :status and t.title = :title")
+//	@Query(value = "select t from TodoEntity t where t.status = :status and t.title = :title")
+	@Query(nativeQuery = true , value = "select * from todo t where t.status = :status and t.title = :title")
 	List<TodoEntity> findByCondition(String title, Integer status);
 	
 	
