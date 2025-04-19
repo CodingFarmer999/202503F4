@@ -77,7 +77,7 @@ public class TodoController {
 	
 	@Operation(summary = "找出到期日區間的待辦事項")
 	@GetMapping("/findByDueDateBetween")
-	public List<TodoEntity> findByDueDateBetween(Date start, Date end) {
+	public List<TodoEntity> findByDueDateBetween(String start, String end) {
 		return todoService.findByDueDateBetween(start, end);
 	}
 	

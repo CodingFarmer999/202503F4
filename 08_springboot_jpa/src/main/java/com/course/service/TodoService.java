@@ -71,7 +71,7 @@ public class TodoService {
 		return todoRepository.findByDueDateGreaterThan(dueDate);
 	}
 	
-	public List<TodoEntity> findByDueDateBetween(Date startDate, Date endDate) {
+	public List<TodoEntity> findByDueDateBetween(String startDate, String endDate) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date start = null;
 		Date end = null;
