@@ -45,9 +45,7 @@ public class TodoService {
 		
 		TodoEntity todo2 = todoRepository.findById(entity.getId()).orElse(null);
 		todo2.setTitle(entity.getTitle());
-		todoRepository.save(todo2);
-
-		return null;
+		return todoRepository.save(todo2);
 	}
 
 }
