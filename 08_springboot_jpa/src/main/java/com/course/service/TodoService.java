@@ -21,4 +21,13 @@ public class TodoService {
 	public TodoEntity addTodo(TodoEntity entity) {
 		return todoRepository.save(entity);
 	}
+	
+	public void deleteAll() {
+		todoRepository.deleteAll();
+	}
+	
+	public void deleteAllInBatch() {
+		todoRepository.deleteAllInBatch();
+	}
+
 }
