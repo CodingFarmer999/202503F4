@@ -1,5 +1,6 @@
 package com.course.controller;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -86,5 +87,14 @@ public class TodoController {
 		return todoService.findByTitleLike(keyword);
 	}
 	
+	@GetMapping("/todo/ids")
+	public List<TodoEntity> findByIdIn() {
+		return todoService.findByIdIn(Arrays.asList(10L, 11L, 13L));
+	}
+	
+	@GetMapping("/todo/orderTitle")
+	public List<TodoEntity> findOrderTitle() {
+		return todoService.findOrderTitle();
+	}
 	
 }

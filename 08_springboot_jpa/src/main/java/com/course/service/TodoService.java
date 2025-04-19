@@ -76,6 +76,7 @@ public class TodoService {
 		Date start = null;
 		Date end = null;
 		try {
+			// 2025/04/19 00:00:00
 		    start = dateFormat.parse(startDate + " 00:00:00");
 		    end = dateFormat.parse(endDate + " 23:59:59");
 		} catch (ParseException e) {
@@ -89,6 +90,17 @@ public class TodoService {
 		System.out.println(keyword);
 		// where title like '%AAA'
 		return todoRepository.findByTitleLike("%" +keyword + "%");
+	}
+	
+	public List<TodoEntity> findByIdIn(List<Long> ids) {
+		
+		System.out.println(ids);
+		// where title like '%AAA'
+		return todoRepository.findByIdIn(ids);
+	}
+	
+	public List<TodoEntity> findOrderTitle() {
+		return todoRepository.findAllByOrderByTitleDesc();
 	}
 
 }

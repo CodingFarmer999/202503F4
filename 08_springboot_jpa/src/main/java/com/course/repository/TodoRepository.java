@@ -28,4 +28,10 @@ public interface TodoRepository extends JpaRepository<TodoEntity, Long> {
 	// SQL語句：select * from todo where title like ?
 	List<TodoEntity> findByTitleLike(String title);
 	
+	// SQL語句：select * from todo where id in (?, ?, ?);
+	List<TodoEntity> findByIdIn(List<Long> ids);
+	
+	// SQL語句：select * from todo order by title;
+	List<TodoEntity> findAllByOrderByTitleDesc();
+	
 }
