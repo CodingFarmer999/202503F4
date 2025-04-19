@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.course.entity.TodoEntity;
@@ -117,5 +118,11 @@ public class TodoService {
 	@Transactional
 	public Integer updateQuery(Long id, String title) {
 		return todoRepository.updateTodo(id, title);
+	}
+	
+	public List<TodoEntity> getByTitleSort(String title) {
+//		Sort sort = Sort.by("dueDate");
+		Sort sort = Sort.by(Sort.Order.desc("dueDate"));
+		return todoRepository.findByTitle(title, sort);
 	}
 }
