@@ -102,5 +102,9 @@ public class TodoService {
 	public List<TodoEntity> findOrderTitle() {
 		return todoRepository.findAllByOrderByTitleDesc();
 	}
+	
+	public Integer countByStatus(Integer status) {
+		return todoRepository.countByStatus(status);
+	}
 
 }

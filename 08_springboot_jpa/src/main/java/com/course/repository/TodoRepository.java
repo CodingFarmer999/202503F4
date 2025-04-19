@@ -34,4 +34,7 @@ public interface TodoRepository extends JpaRepository<TodoEntity, Long> {
 	// SQL語句：select * from todo order by title;
 	List<TodoEntity> findAllByOrderByTitleDesc();
 	
+	// SQL語句：select count(*) from todo where status = ?;
+	Integer countByStatus(Integer status);
+	
 }
