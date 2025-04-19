@@ -17,4 +17,8 @@ public class TodoService {
 	public List<TodoEntity> getAllTodo() {
 		return todoRepository.findAll();
 	}
+	
+	public TodoEntity addTodo(TodoEntity entity) {
+		return todoRepository.save(entity);
+	}
 }

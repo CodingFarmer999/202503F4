@@ -82,4 +82,11 @@ public class TodoEntity {
 		this.userId = userId;
 	}
 
+	@Override
+	public String toString() {
+		return "TodoEntity [id=" + id + ", title=" + title + ", dueDate=" + dueDate + ", status=" + status + ", memo="
+				+ memo + ", userId=" + userId + "]";
+	}
+
+
 }
