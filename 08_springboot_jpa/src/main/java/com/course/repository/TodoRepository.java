@@ -57,6 +57,7 @@ public interface TodoRepository extends JpaRepository<TodoEntity, Long> {
 	
 	public Page<TodoEntity> findAll(Pageable pageable);
 	
+	@Query("select new com.course.dto.TodoDto(t.title, u.username) from TodoEntity t join UserEntity u on u.id = t.userId")
 	List<TodoDto> getTodoDtoList();
 	
 }

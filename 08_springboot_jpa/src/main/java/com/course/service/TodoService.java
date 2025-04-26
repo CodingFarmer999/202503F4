@@ -128,7 +128,8 @@ public class TodoService {
 	}
 	
 	public List<TodoDto> findUser() {
-		return todoRepository.getTodoDtoList();
+		List<TodoDto> dtoList = todoRepository.getTodoDtoList();
+		return dtoList;
 	}
 	
 }
