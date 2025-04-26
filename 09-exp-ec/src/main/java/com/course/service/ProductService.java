@@ -134,9 +134,9 @@ public class ProductService {
 		return customRepository.findByCondition(queryParam);
 	}
 	
-	public void findProduct() {
+	public List<ProductEntity> findProduct() {
 		List<ProductEntity> products = productRepository.findAll();
-		System.out.println("XXX");
+		return products;
 	}
 	
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.course.dto.ProductDto;
+import com.course.entity.ProductEntity;
 import com.course.service.ProductService;
 import com.course.vo.ProductQueryParam;
 import com.course.vo.ProductVo;
@@ -60,10 +61,12 @@ public class ProductController {
 		return ResponseEntity.ok().body(productList);
 	}
 	
-	@Operation(summary = "取得所有商品", tags = "商品")
-	@GetMapping("/products3")
-	public ResponseEntity<String> getAll() {
-		productService.findProduct();
-		return ResponseEntity.ok().body("OK");
+	@Operation(summary = "取得所有商品(Entity)", tags = "商品")
+	@GetMapping("/productsEntity")
+	public ResponseEntity<List<ProductEntity>> findProduct() {
+		List<ProductEntity> productList = productService.findProduct();
+		return ResponseEntity.ok().body(productList);
 	}
+	
+
 }
