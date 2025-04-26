@@ -39,13 +39,13 @@ public class ProductPriceEntity {
 		this.id = id;
 	}
 
-//	public Long getProductId() {
-//		return productId;
-//	}
-//
-//	public void setProductId(Long productId) {
-//		this.productId = productId;
-//	}
+	public Long getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
 
 	public BigDecimal getListPrice() {
 		return listPrice;

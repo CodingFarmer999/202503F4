@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.course.dto.ProductDto;
 import com.course.entity.ProductEntity;
+import com.course.entity.ProductPriceEntity;
 import com.course.repository.ProductCustomRepository;
+import com.course.repository.ProductPriceRepository;
 import com.course.repository.ProductRepository;
 import com.course.vo.ProductQueryParam;
 import com.course.vo.ProductVo;
@@ -17,7 +19,11 @@ import com.course.vo.ProductVo;
 public class ProductService {
 
 	// Repository
+	@Autowired
+	private ProductRepository productRepository;
 	
+	@Autowired
+	private ProductPriceRepository productPriceRepository;
 	
 	private ProductCustomRepository customRepository;
 	
@@ -26,12 +32,18 @@ public class ProductService {
 	 * @param vo
 	 */
 	public void addProduct(ProductVo vo) {
-		ProductEntity entity = new ProductEntity();
-
-
 		// 新增 Product 資料
-		
+		ProductEntity entity = new ProductEntity();
+		entity.setCode(vo.getCode());
+		entity.setName(vo.getName());
+		entity = productRepository.save(entity);
+
 		// 新增 ProductPrice 資料
+		ProductPriceEntity priceEntity = new ProductPriceEntity();
+		priceEntity.setListPrice(vo.getListPrice());
+		priceEntity.setSalesPrice(vo.getListPrice());
+		priceEntity.setProductId(entity.getId());
+		productPriceRepository.save(priceEntity);
 	}
 	
 	/**
