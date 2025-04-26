@@ -47,7 +47,7 @@ public class ProductService {
 		ProductPriceEntity priceEntity = new ProductPriceEntity();
 		priceEntity.setListPrice(vo.getListPrice());
 		priceEntity.setSalesPrice(vo.getListPrice());
-		priceEntity.setProductId(entity.getId());
+//		priceEntity.setProductId(entity.getId());
 		productPriceRepository.save(priceEntity);
 	}
 	
@@ -103,6 +103,11 @@ public class ProductService {
 	 */
 	public List<ProductDto> getProductByCondition(ProductQueryParam queryParam) {
 		return customRepository.findByCondition(queryParam);
+	}
+	
+	public void findProduct() {
+		List<ProductEntity> products = productRepository.findAll();
+		System.out.println("XXX");
 	}
 	
 }

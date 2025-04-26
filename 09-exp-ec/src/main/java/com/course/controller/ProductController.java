@@ -59,4 +59,11 @@ public class ProductController {
 		List<ProductDto> productList = productService.getProductByCondition(queryParam);
 		return ResponseEntity.ok().body(productList);
 	}
+	
+	@Operation(summary = "取得所有商品", tags = "商品")
+	@GetMapping("/products3")
+	public ResponseEntity<String> getAll() {
+		productService.findProduct();
+		return ResponseEntity.ok().body("OK");
+	}
 }

@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
@@ -25,10 +27,13 @@ public class ProductPriceEntity {
 	@Column
 	private BigDecimal salesPrice;
 
-	@Column
-	private Long productId;
+//	@Column
+//	private Long productId;
 	
 	// 與 Product 的關聯 OneToOne
+    @OneToOne
+    @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "ID")
+    private ProductEntity product;
 	
 
 	public Long getId() {
@@ -39,13 +44,13 @@ public class ProductPriceEntity {
 		this.id = id;
 	}
 
-	public Long getProductId() {
-		return productId;
-	}
-
-	public void setProductId(Long productId) {
-		this.productId = productId;
-	}
+//	public Long getProductId() {
+//		return productId;
+//	}
+//
+//	public void setProductId(Long productId) {
+//		this.productId = productId;
+//	}
 
 	public BigDecimal getListPrice() {
 		return listPrice;

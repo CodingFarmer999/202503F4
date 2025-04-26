@@ -1,10 +1,12 @@
 package com.course.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
@@ -24,6 +26,10 @@ public class ProductEntity {
 	private String name;
 	
 	// 與 Product Price 的關聯 OneToOne
+	
+    // ProductPriceEntity 的 ProductEntity 欄位名稱
+    @OneToOne(mappedBy = "product",  cascade = CascadeType.ALL, orphanRemoval = true)
+    private ProductPriceEntity productPrice;
 	
 	
 	// 與 Product Review 的關聯(一個商品可以有多個評論) OneToMany
