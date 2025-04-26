@@ -6,6 +6,9 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -124,5 +127,11 @@ public class TodoService {
 //		Sort sort = Sort.by("dueDate");
 		Sort sort = Sort.by(Sort.Order.desc("dueDate"));
 		return todoRepository.findByTitle(title, sort);
+	}
+	
+	
+	public Page<TodoEntity> getAllWithPage() {
+		Pageable pageable = PageRequest.of(0, 2);
+		return todoRepository.findAll(pageable);
 	}
 }
