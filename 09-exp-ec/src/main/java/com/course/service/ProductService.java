@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.course.dto.ProductDto;
 import com.course.entity.ProductEntity;
@@ -31,6 +32,7 @@ public class ProductService {
 	 * 新增商品
 	 * @param vo
 	 */
+	@Transactional
 	public void addProduct(ProductVo vo) {
 		// 新增 Product 資料
 		ProductEntity entity = new ProductEntity();
@@ -38,6 +40,9 @@ public class ProductService {
 		entity.setName(vo.getName());
 		entity = productRepository.save(entity);
 
+		// 出錯拉
+		// Integer.parseInt("ABC");
+		
 		// 新增 ProductPrice 資料
 		ProductPriceEntity priceEntity = new ProductPriceEntity();
 		priceEntity.setListPrice(vo.getListPrice());
