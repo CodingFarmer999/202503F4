@@ -130,8 +130,8 @@ public class TodoService {
 	}
 	
 	
-	public Page<TodoEntity> getAllWithPage() {
-		Pageable pageable = PageRequest.of(0, 2);
+	public Page<TodoEntity> getAllWithPage(Integer pageNum, Integer size) {
+		Pageable pageable = PageRequest.of(pageNum, size);
 		return todoRepository.findAll(pageable);
 	}
 }

@@ -122,8 +122,8 @@ public class TodoController {
 	
 	@Operation(summary = "取得所有商品並分頁", tags = "page")
 	@GetMapping("/todo/page/")
-	public Page<TodoEntity> getAllWithPage() {
-		return todoService.getAllWithPage();
+	public Page<TodoEntity> getAllWithPage(Integer pageNum, Integer size) {
+		return todoService.getAllWithPage(pageNum, size);
 	}
 	
 }
