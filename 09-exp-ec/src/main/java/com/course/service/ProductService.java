@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import com.course.dto.ProductDto;
+import com.course.entity.CategoryEntity;
 import com.course.entity.ProductEntity;
 import com.course.entity.ProductPriceEntity;
 import com.course.entity.ProductReviewEntity;
@@ -83,6 +84,12 @@ public class ProductService {
 
 				vo.setMemos(result);
 
+			}
+			
+			if (!CollectionUtils.isEmpty(product.getCategoryList())) {
+				
+				List<String> categories = product.getCategoryList().stream().map(CategoryEntity::getName).collect(Collectors.toList());
+				vo.setCategories(categories);
 			}
 			
 			return vo;
