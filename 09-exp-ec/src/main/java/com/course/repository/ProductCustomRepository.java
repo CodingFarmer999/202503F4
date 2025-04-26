@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.course.dto.ProductDto;
 import com.course.vo.ProductQueryParam;
 
+@Repository
 public class ProductCustomRepository {
 	
 	// EntityManager
