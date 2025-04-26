@@ -12,6 +12,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.course.dto.TodoDto;
 import com.course.entity.TodoEntity;
 
 @Repository
@@ -55,5 +56,7 @@ public interface TodoRepository extends JpaRepository<TodoEntity, Long> {
 	public List<TodoEntity> findByTitle(String title, Sort sort);
 	
 	public Page<TodoEntity> findAll(Pageable pageable);
+	
+	List<TodoDto> getTodoDtoList();
 	
 }
