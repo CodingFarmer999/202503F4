@@ -16,6 +16,19 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
+//@SqlResultSetMapping(
+//	    name = "ProductDtoMapping",
+//	    classes = @ConstructorResult(
+//	        targetClass = ProductDto.class,
+//	        columns = {
+//	            @ColumnResult(name = "NAME", type = String.class),
+//	            @ColumnResult(name = "LIST_PRICE", type = BigDecimal.class),
+//	            @ColumnResult(name = "SALES_PRICE", type = BigDecimal.class),
+//	            @ColumnResult(name = "MEMO", type = String.class),
+//	            @ColumnResult(name = "CNAME", type = String.class)
+//	        }
+//	    )
+//	)
 @Entity
 @Table(name = "PRODUCT")
 public class ProductEntity {

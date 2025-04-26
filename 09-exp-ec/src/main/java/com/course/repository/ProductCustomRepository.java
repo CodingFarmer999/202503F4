@@ -40,7 +40,9 @@ public class ProductCustomRepository {
 			JOIN CATEGORY C ON C.ID = PC.CATEGORY_ID
 		""";
     	
-    	Query query = entityManager.createNativeQuery(sql, ProductDto.class);
+    	// Query query = entityManager.createNativeQuery(sql, ProductDto.class);
+    	Query query = entityManager.createNativeQuery(sql, "ProductDtoMapping");
+    	
     	return query.getResultList();
     }
     
