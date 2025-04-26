@@ -2,14 +2,30 @@ package com.course.entity;
 
 import java.math.BigDecimal;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "PRODUCT_PRICE")
 public class ProductPriceEntity {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUCT_PRICE_SEQ_GENERATOR")
+	@SequenceGenerator(name = "PRODUCT_PRICE_SEQ_GENERATOR", sequenceName = "PRODUCT_PRICE_SEQ", allocationSize = 1)
 	private Long id;
 	
+	@Column
 	private BigDecimal listPrice;
 	
+	@Column
 	private BigDecimal salesPrice;
 
+	@Column
 	private Long productId;
 	
 	// 與 Product 的關聯 OneToOne
