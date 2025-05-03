@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import com.course.dto.ProductDto;
 import com.course.vo.ProductVo;
 
-@Mapper
+// @Mapper
 public interface ProductMapper {
 
 	@Select("SELECT * FROM PRODUCT P LEFT JOIN PRODUCT_PRICE R ON R.PRODUCT_ID = P.ID")
