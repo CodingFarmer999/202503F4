@@ -146,5 +146,11 @@ public class ProductJpaServiceImpl implements ProductService {
 		List<ProductEntity> products = productRepository.findAll();
 		return products;
 	}
+
+	@Override
+	public List<ProductDto> findByCategories(List<String> categories) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

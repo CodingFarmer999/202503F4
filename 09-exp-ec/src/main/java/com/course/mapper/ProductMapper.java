@@ -34,4 +34,6 @@ public interface ProductMapper {
 	ProductDto findById(Long id);
 	
 	List<ProductDto> findByCondition(ProductQueryParam queryParam);
+	
+	List<ProductDto> findByCategories(List<String> categories);
 }

@@ -42,5 +42,7 @@ public interface ProductService {
 	List<ProductDto> getProductByCondition(ProductQueryParam queryParam);
 
 	List<ProductEntity> findProduct();
+	
+	List<ProductDto> findByCategories(List<String> categories);
 
 }

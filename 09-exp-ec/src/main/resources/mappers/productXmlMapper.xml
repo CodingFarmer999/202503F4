@@ -43,4 +43,21 @@
 		</where>
 	</select>
 	
+	<select id="findByCategories" resultType="com.course.dto.ProductDto">
+		SELECT 
+		P.CODE,
+		P.NAME,
+		R.LIST_PRICE,
+		R.SALES_PRICE,
+		C.NAME
+		FROM PRODUCT P 
+		LEFT JOIN PRODUCT_PRICE R ON R.PRODUCT_ID = P.ID
+		LEFT JOIN PRODUCT_CATEGORY PC ON PC.PRODUCT_ID = P.ID
+		LEFT JOIN CATEGORY C ON C.ID = PC.CATEGORY_ID
+		WHERE C.NAME IN 
+        <foreach collection="categories" item="category" open="(" separator="," close=")" >
+            #{category}
+        </foreach>
+	</select>
+	
 </mapper>

@@ -100,4 +100,10 @@ public class ProductMapperServiceImpl implements ProductService {
 		return null;
 	}
 
+	@Override
+	public List<ProductDto> findByCategories(List<String> categories) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
