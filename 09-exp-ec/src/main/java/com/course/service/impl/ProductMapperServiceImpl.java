@@ -34,13 +34,12 @@ public class ProductMapperServiceImpl implements ProductService {
 			vo.setCode(dto.getCode());
 			vo.setListPrice(dto.getListPrice());
 			vo.setSalesPrice(dto.getSalesPrice());
+			List<ProductDto> reviews = productMapper.findReviewById(dto.getId());
+			List<String> memos = reviews.stream().map(ProductDto::getMemo).collect(Collectors.toList());
+			vo.setMemos(memos);
 			// 各個欄位
 			return vo;
 		}).collect(Collectors.toList());
-		
-		for (ProductDto dto : products) {
-			List<ProductDto> reviews = productMapper.findReviewById(dto.getId());
-		}
 		
 		return voList;
 	}
