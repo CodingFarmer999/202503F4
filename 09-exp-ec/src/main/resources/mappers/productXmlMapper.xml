@@ -65,4 +65,8 @@
 
 	</select>
 	
+	<update id="updatePrice" parameterType="com.course.vo.ProductVo">
+		UPDATE PRODUCT_PRICE SET LIST_PRICE = #{listPrice} , SALES_PRICE = #{salesPrice} WHERE ID = #{id}
+	</update>
+	
 </mapper>

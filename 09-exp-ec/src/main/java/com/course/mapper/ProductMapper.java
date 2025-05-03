@@ -36,4 +36,6 @@ public interface ProductMapper {
 	List<ProductDto> findByCondition(ProductQueryParam queryParam);
 	
 	List<ProductDto> findByCategories(List<String> categories);
+	
+	void updatePrice(ProductVo vo);
 }

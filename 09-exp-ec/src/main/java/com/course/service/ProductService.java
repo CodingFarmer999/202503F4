@@ -44,5 +44,7 @@ public interface ProductService {
 	List<ProductEntity> findProduct();
 	
 	List<ProductDto> findByCategories(List<String> categories);
+	
+	void updateProductPrice(ProductVo vo);
 
 }

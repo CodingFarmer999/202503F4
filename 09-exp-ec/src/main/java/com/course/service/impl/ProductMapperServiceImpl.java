@@ -105,4 +105,10 @@ public class ProductMapperServiceImpl implements ProductService {
 		return productMapper.findByCategories(categories);
 	}
 
+	@Override
+	public void updateProductPrice(ProductVo vo) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
