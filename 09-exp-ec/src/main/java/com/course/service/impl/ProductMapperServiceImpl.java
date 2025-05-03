@@ -67,7 +67,7 @@ public class ProductMapperServiceImpl implements ProductService {
 
 	@Override
 	public ProductVo getProductById(Long id) {
-		// TODO Auto-generated method stub
+		ProductDto dto = productMapper.findById(id);
 		return null;
 	}
 

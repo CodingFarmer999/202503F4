@@ -8,6 +8,11 @@
 		* 
 		FROM PRODUCT P 
 		LEFT JOIN PRODUCT_PRICE R ON R.PRODUCT_ID = P.ID
-	
+		<!-- WHERE P.ID = #{id} -->
+		<where>
+	        <if test="id != null ">
+	            AND P.ID = #{id}
+	        </if>
+		</where>
 	</select>
 </mapper>
