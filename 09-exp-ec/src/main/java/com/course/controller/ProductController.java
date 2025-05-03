@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.course.dto.ProductDto;
@@ -68,6 +69,13 @@ public class ProductController {
 	@GetMapping("/productsEntity")
 	public ResponseEntity<List<ProductEntity>> findProduct() {
 		List<ProductEntity> productList = productService.findProduct();
+		return ResponseEntity.ok().body(productList);
+	}
+	
+	@Operation(summary = "依分類取得商品", tags = "商品")
+	@GetMapping("/product/categories")
+	public ResponseEntity<List<ProductDto>> findByCategories(@RequestParam List<String> categories) {
+		List<ProductDto> productList = productService.findByCategories(categories);
 		return ResponseEntity.ok().body(productList);
 	}
 	

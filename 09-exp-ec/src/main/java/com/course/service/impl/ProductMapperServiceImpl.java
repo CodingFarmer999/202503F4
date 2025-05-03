@@ -102,8 +102,7 @@ public class ProductMapperServiceImpl implements ProductService {
 
 	@Override
 	public List<ProductDto> findByCategories(List<String> categories) {
-		// TODO Auto-generated method stub
-		return null;
+		return productMapper.findByCategories(categories);
 	}
 
 }
