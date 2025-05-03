@@ -22,7 +22,13 @@ public class ProductMapperServiceImpl implements ProductService {
 	
 	@Override
 	public void addProduct(ProductVo vo) {
+		// 先抽SEQ
+		Long pId = productMapper.getProductSeq();
+		vo.setId(pId);
 		productMapper.insertProduct(vo);
+		
+		// 新增 ProductPrice
+		productMapper.insertProductPrice(vo);
 		
 	}
 

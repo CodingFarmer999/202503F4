@@ -5,6 +5,8 @@ import java.util.List;
 
 public class ProductVo {
 
+	private Long id;
+	
 	private String code;
 	
 	private String name;
@@ -63,6 +65,14 @@ public class ProductVo {
 
 	public void setCategories(List<String> categories) {
 		this.categories = categories;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 
