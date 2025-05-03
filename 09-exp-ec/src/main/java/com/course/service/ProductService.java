@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.course.dto.ProductDto;
 import com.course.entity.ProductEntity;
+import com.course.exception.ActionException;
 import com.course.vo.ProductQueryParam;
 import com.course.vo.ProductVo;
 
@@ -26,8 +27,9 @@ public interface ProductService {
 	/**
 	 * 透過ID取得商品
 	 * @return
+	 * @throws ActionException 
 	 */
-	ProductVo getProductById(Long id);
+	ProductVo getProductById(Long id) throws ActionException;
 
 	/**
 	 * 取得所有商品，使用EntityManager

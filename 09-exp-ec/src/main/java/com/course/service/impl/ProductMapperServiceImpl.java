@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.course.dto.ProductDto;
 import com.course.entity.ProductEntity;
+import com.course.exception.ActionException;
 import com.course.mapper.ProductMapper;
 import com.course.service.ProductService;
 import com.course.vo.ProductQueryParam;
@@ -67,15 +68,32 @@ public class ProductMapperServiceImpl implements ProductService {
 		return voList;
 	}
 
+//	@Override
+//	public ProductVo getProductById(Long id) {
+//		Integer.parseInt("ABC");
+//		ProductDto dto = productMapper.findById(id);
+//		ProductVo vo = new ProductVo();
+//		vo.setName(dto.getName());
+//		vo.setCode(dto.getCode());
+//		vo.setListPrice(dto.getListPrice());
+//		vo.setSalesPrice(dto.getSalesPrice());
+//		return vo;
+//	}
+	
 	@Override
-	public ProductVo getProductById(Long id) {
-		Integer.parseInt("ABC");
-		ProductDto dto = productMapper.findById(id);
+	public ProductVo getProductById(Long id) throws ActionException {
 		ProductVo vo = new ProductVo();
-		vo.setName(dto.getName());
-		vo.setCode(dto.getCode());
-		vo.setListPrice(dto.getListPrice());
-		vo.setSalesPrice(dto.getSalesPrice());
+		try {
+			Integer.parseInt("ABC");
+			ProductDto dto = productMapper.findById(id);
+			vo.setName(dto.getName());
+			vo.setCode(dto.getCode());
+			vo.setListPrice(dto.getListPrice());
+			vo.setSalesPrice(dto.getSalesPrice());
+		} catch (Exception e) {
+			throw new ActionException("出事了");
+		}
+
 		return vo;
 	}
 

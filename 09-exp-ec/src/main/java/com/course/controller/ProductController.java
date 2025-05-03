@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.course.dto.ProductDto;
 import com.course.entity.ProductEntity;
+import com.course.exception.ActionException;
 import com.course.service.ProductService;
 import com.course.vo.ProductQueryParam;
 import com.course.vo.ProductVo;
@@ -46,7 +47,7 @@ public class ProductController {
 	
 	@Operation(summary = "依ID取得商品", tags = "商品")
 	@GetMapping("/product/{id}")
-	public ResponseEntity<ProductVo> getProductById(@PathVariable Long id) {
+	public ResponseEntity<ProductVo> getProductById(@PathVariable Long id) throws ActionException {
 		ProductVo product = productService.getProductById(id);
 		return ResponseEntity.ok().body(product);
 	}
