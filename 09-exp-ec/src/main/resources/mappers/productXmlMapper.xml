@@ -4,7 +4,10 @@
 <mapper namespace="com.course.mapper.ProductMapper">
 
 	<select id="findById">
-
+		SELECT 
+		* 
+		FROM PRODUCT P 
+		LEFT JOIN PRODUCT_PRICE R ON R.PRODUCT_ID = P.ID
 	
 	</select>
 </mapper>
