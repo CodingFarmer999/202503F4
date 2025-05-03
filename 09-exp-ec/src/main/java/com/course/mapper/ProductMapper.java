@@ -29,4 +29,6 @@ public interface ProductMapper {
 	
 	@Insert("INSERT INTO PRODUCT_PRICE (ID, PRODUCT_ID, LIST_PRICE, SALES_PRICE) VALUES (PRODUCT_PRICE_SEQ.NEXTVAL, #{id}, #{listPrice}, #{salesPrice})")
 	void insertProductPrice(ProductVo vo);
+	
+	List<ProductDto> findById(Long id);
 }
