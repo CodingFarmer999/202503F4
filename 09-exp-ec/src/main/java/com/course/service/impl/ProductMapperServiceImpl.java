@@ -68,7 +68,12 @@ public class ProductMapperServiceImpl implements ProductService {
 	@Override
 	public ProductVo getProductById(Long id) {
 		ProductDto dto = productMapper.findById(id);
-		return null;
+		ProductVo vo = new ProductVo();
+		vo.setName(dto.getName());
+		vo.setCode(dto.getCode());
+		vo.setListPrice(dto.getListPrice());
+		vo.setSalesPrice(dto.getSalesPrice());
+		return vo;
 	}
 
 	@Override

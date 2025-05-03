@@ -3,9 +3,12 @@
 
 <mapper namespace="com.course.mapper.ProductMapper">
 
-	<select id="findById">
+	<select id="findById" resultType="com.course.dto.ProductDto">
 		SELECT 
-		* 
+		P.CODE,
+		P.NAME,
+		R.LIST_PRICE,
+		R.SALES_PRICE 
 		FROM PRODUCT P 
 		LEFT JOIN PRODUCT_PRICE R ON R.PRODUCT_ID = P.ID
 		<!-- WHERE P.ID = #{id} -->
