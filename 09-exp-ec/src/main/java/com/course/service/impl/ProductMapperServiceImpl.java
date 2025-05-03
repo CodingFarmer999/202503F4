@@ -1,11 +1,14 @@
 package com.course.service.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.course.dto.ProductDto;
 import com.course.entity.ProductEntity;
+import com.course.mapper.ProductMapper;
 import com.course.service.ProductService;
 import com.course.vo.ProductQueryParam;
 import com.course.vo.ProductVo;
@@ -13,6 +16,9 @@ import com.course.vo.ProductVo;
 @Service
 public class ProductMapperServiceImpl implements ProductService {
 
+	@Autowired
+	private  ProductMapper productMapper;
+	
 	@Override
 	public void addProduct(ProductVo vo) {
 		// TODO Auto-generated method stub
@@ -21,8 +27,18 @@ public class ProductMapperServiceImpl implements ProductService {
 
 	@Override
 	public List<ProductVo> getAllProduct() {
-		// TODO Auto-generated method stub
-		return null;
+		List<ProductDto> products = productMapper.findAll();
+		List<ProductVo> voList = products.stream().map(dto -> {
+			ProductVo vo = new ProductVo();
+			vo.setName(dto.getName());
+			vo.setCode(dto.getCode());
+			vo.setListPrice(dto.getListPrice());
+			vo.setSalesPrice(dto.getSalesPrice());
+			// 各個欄位
+			return vo;
+		}).collect(Collectors.toList());
+		
+		return voList;
 	}
 
 	@Override
