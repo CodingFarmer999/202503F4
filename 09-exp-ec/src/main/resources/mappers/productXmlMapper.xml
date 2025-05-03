@@ -54,10 +54,15 @@
 		LEFT JOIN PRODUCT_PRICE R ON R.PRODUCT_ID = P.ID
 		LEFT JOIN PRODUCT_CATEGORY PC ON PC.PRODUCT_ID = P.ID
 		LEFT JOIN CATEGORY C ON C.ID = PC.CATEGORY_ID
-		WHERE C.NAME IN 
-        <foreach collection="categories" item="category" open="(" separator="," close=")" >
-            #{category}
-        </foreach>
+		<where>
+			<if test="categories != null and categories.size() > 0">
+				 C.NAME IN 
+		        <foreach collection="categories" item="category" open="(" separator="," close=")" >
+		            #{category}
+		        </foreach>
+	        </if>
+		</where>
+
 	</select>
 	
 </mapper>

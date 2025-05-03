@@ -74,7 +74,7 @@ public class ProductController {
 	
 	@Operation(summary = "依分類取得商品", tags = "商品")
 	@GetMapping("/product/categories")
-	public ResponseEntity<List<ProductDto>> findByCategories(@RequestParam List<String> categories) {
+	public ResponseEntity<List<ProductDto>> findByCategories(@RequestParam(required = false) List<String> categories) {
 		List<ProductDto> productList = productService.findByCategories(categories);
 		return ResponseEntity.ok().body(productList);
 	}
