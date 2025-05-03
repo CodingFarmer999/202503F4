@@ -1,6 +1,7 @@
 package com.course.service.impl;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,18 +29,30 @@ public class ProductMapperServiceImpl implements ProductService {
 	@Override
 	public List<ProductVo> getAllProduct() {
 		List<ProductDto> products = productMapper.findAll();
+		
+		List<ProductDto> dtos = productMapper.findAllReview();
+		Map<Long, List<String>> memoResult = dtos.stream().collect(Collectors.groupingBy(
+				// 以 productId 作為 Key
+                ProductDto::getProductId,
+                // 以 memo 作為 List 來做 Value
+                Collectors.mapping(ProductDto::getMemo, Collectors.toList()) 
+            ));
+		
 		List<ProductVo> voList = products.stream().map(dto -> {
 			ProductVo vo = new ProductVo();
 			vo.setName(dto.getName());
 			vo.setCode(dto.getCode());
 			vo.setListPrice(dto.getListPrice());
 			vo.setSalesPrice(dto.getSalesPrice());
-			List<ProductDto> reviews = productMapper.findReviewById(dto.getId());
-			List<String> memos = reviews.stream().map(ProductDto::getMemo).collect(Collectors.toList());
-			vo.setMemos(memos);
+			vo.setMemos(memoResult.get(dto.getId()));
+//			List<ProductDto> reviews = productMapper.findReviewById(dto.getId());
+//			List<String> memos = reviews.stream().map(ProductDto::getMemo).collect(Collectors.toList());
+//			vo.setMemos(memos);
 			// 各個欄位
 			return vo;
 		}).collect(Collectors.toList());
+		
+
 		
 		return voList;
 	}

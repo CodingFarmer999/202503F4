@@ -15,4 +15,7 @@ public interface ProductMapper {
 	
 	@Select("SELECT * FROM　PRODUCT_REVIEW RE WHERE RE.PRODUCT_ID = #{id}")
 	List<ProductDto> findReviewById(Long id);
+	
+	@Select("SELECT * FROM　PRODUCT_REVIEW")
+	List<ProductDto> findAllReview();
 }
