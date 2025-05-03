@@ -84,8 +84,9 @@ public class ProductMapperServiceImpl implements ProductService {
 
 	@Override
 	public List<ProductDto> getProductByCondition(ProductQueryParam queryParam) {
-		// TODO Auto-generated method stub
-		return null;
+		List<ProductDto> products = productMapper.findByCondition(queryParam);
+		
+		return products;
 	}
 
 	@Override

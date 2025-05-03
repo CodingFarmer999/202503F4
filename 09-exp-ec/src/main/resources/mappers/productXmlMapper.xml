@@ -18,4 +18,29 @@
 	        </if>
 		</where>
 	</select>
+	
+	<select id="findByCondition" resultType="com.course.dto.ProductDto" parameterType="com.course.vo.ProductQueryParam">
+		SELECT 
+		P.CODE,
+		P.NAME,
+		R.LIST_PRICE,
+		R.SALES_PRICE 
+		FROM PRODUCT P 
+		LEFT JOIN PRODUCT_PRICE R ON R.PRODUCT_ID = P.ID
+		<where>
+			<if test="productName != null and productName != '' ">
+				AND P.NAME LIKE #{productName}
+			</if>
+			
+			<if test="minPrice != null">
+				AND R.SALES_PRICE &gt;= #{minPrice}
+			</if>
+			
+			<if test="maxPrice != null">
+				AND R.SALES_PRICE &lt;= #{minPrice}
+			</if>
+		
+		</where>
+	</select>
+	
 </mapper>

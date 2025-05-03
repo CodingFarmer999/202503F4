@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import com.course.dto.ProductDto;
+import com.course.vo.ProductQueryParam;
 import com.course.vo.ProductVo;
 
 // @Mapper
@@ -31,4 +32,6 @@ public interface ProductMapper {
 	void insertProductPrice(ProductVo vo);
 	
 	ProductDto findById(Long id);
+	
+	List<ProductDto> findByCondition(ProductQueryParam queryParam);
 }
