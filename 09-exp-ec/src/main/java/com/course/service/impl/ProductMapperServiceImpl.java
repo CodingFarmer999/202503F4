@@ -38,6 +38,10 @@ public class ProductMapperServiceImpl implements ProductService {
 			return vo;
 		}).collect(Collectors.toList());
 		
+		for (ProductDto dto : products) {
+			List<ProductDto> reviews = productMapper.findReviewById(dto.getId());
+		}
+		
 		return voList;
 	}
 
