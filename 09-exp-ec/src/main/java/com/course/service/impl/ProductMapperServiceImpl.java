@@ -22,7 +22,7 @@ public class ProductMapperServiceImpl implements ProductService {
 	
 	@Override
 	public void addProduct(ProductVo vo) {
-		// TODO Auto-generated method stub
+		productMapper.insertProduct(vo);
 		
 	}
 
@@ -31,6 +31,8 @@ public class ProductMapperServiceImpl implements ProductService {
 		List<ProductDto> products = productMapper.findAll();
 		
 		List<ProductDto> dtos = productMapper.findAllReview();
+		// Key: 1 Value : [買不到, 好貴, 好用]
+		// Key: 2 Value : [無]
 		Map<Long, List<String>> memoResult = dtos.stream().collect(Collectors.groupingBy(
 				// 以 productId 作為 Key
                 ProductDto::getProductId,
