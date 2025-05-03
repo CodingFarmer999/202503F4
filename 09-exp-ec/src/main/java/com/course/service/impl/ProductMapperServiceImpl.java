@@ -107,8 +107,7 @@ public class ProductMapperServiceImpl implements ProductService {
 
 	@Override
 	public void updateProductPrice(ProductVo vo) {
-		// TODO Auto-generated method stub
-		
+		productMapper.updatePrice(vo);
 	}
 
 }

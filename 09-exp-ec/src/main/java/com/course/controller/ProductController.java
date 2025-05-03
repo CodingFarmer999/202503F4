@@ -79,5 +79,10 @@ public class ProductController {
 		return ResponseEntity.ok().body(productList);
 	}
 	
-
+	@Operation(summary = "更新商品價格", tags = "商品")
+	@PostMapping("/price")
+	public ResponseEntity<String> updateProductPrice(@RequestBody ProductVo vo) {
+		productService.updateProductPrice(vo);
+		return ResponseEntity.ok().body("OK");
+	}
 }
