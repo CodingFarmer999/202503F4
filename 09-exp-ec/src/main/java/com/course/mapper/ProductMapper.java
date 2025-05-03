@@ -24,7 +24,7 @@ public interface ProductMapper {
 	@Select("SELECT PRODUCT_SEQ.NEXTVAL FROM DUAL")
 	Long getProductSeq();
 	
-	@Insert("INSERT INTO PRODUCT (ID, CODE, NAME) VALUES (PRODUCT_SEQ.NEXTVAL, #{code}, #{name})")
+	@Insert("INSERT INTO PRODUCT (ID, CODE, NAME) VALUES (#{id}, #{code}, #{name})")
 	void insertProduct(ProductVo vo);
 	
 	@Insert("INSERT INTO PRODUCT_PRICE (ID, PRODUCT_ID, LIST_PRICE, SALES_PRICE) VALUES (PRODUCT_PRICE_SEQ.NEXTVAL, #{id}, #{listPrice}, #{salesPrice})")
