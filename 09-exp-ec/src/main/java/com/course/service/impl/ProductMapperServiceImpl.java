@@ -84,8 +84,11 @@ public class ProductMapperServiceImpl implements ProductService {
 
 	@Override
 	public List<ProductDto> getProductByCondition(ProductQueryParam queryParam) {
-		String key = "%" + queryParam.getProductName() + "%";
-		queryParam.setProductName(key);
+		String key = queryParam.getProductName();
+		if (key != null && !key.isBlank()) {
+			queryParam.setProductName("%" + key + "%");
+		}
+
 		List<ProductDto> products = productMapper.findByCondition(queryParam);
 		
 		return products;

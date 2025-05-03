@@ -37,7 +37,7 @@
 			</if>
 			
 			<if test="maxPrice != null">
-				AND R.SALES_PRICE &lt;= #{minPrice}
+				AND R.SALES_PRICE &lt;= #{maxPrice}
 			</if>
 		
 		</where>
