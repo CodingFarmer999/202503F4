@@ -1,6 +1,8 @@
 package com.course.aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -23,5 +25,15 @@ public class ProductAspect {
 	@Before("pointCutMethod()")
 	public void beforeAdvice(JoinPoint joinPoint) {
 	    logger.info("切面 AopAspect.beforeAdvice() -> @Before通知，在方法調用前先行調用，被切的方法名稱：" + joinPoint.getSignature().getName());
+	}
+	
+	@Around("pointCutMethod()")
+	public void aroundAdvice(ProceedingJoinPoint joinPoint) throws Throwable {
+	    logger.info("切面 AopAspect.aroundAdvice() -> @Around通知 proceed之前，被切的方法名稱：" + joinPoint.getSignature().getName());
+	    // 需要Throw Exception
+
+	    joinPoint.proceed();
+ 
+	    logger.info("切面 AopAspect.aroundAdvice() -> @Around通知 proceed之後");
 	}
 }
