@@ -10,6 +10,6 @@ import com.course.dto.ProductDto;
 @Mapper
 public interface ProductMapper {
 
-	@Select("SELECT * FROM PRODUCT")
+	@Select("SELECT * FROM PRODUCT P LEFT JOIN PRODUCT_PRICE R ON R.PRODUCT_ID = P.ID")
 	List<ProductDto> findAll();
 }

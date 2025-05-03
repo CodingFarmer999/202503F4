@@ -1,4 +1,4 @@
-package com.course.service;
+package com.course.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +17,7 @@ import com.course.entity.ProductReviewEntity;
 import com.course.repository.ProductCustomRepository;
 import com.course.repository.ProductPriceRepository;
 import com.course.repository.ProductRepository;
+import com.course.service.ProductService;
 import com.course.vo.ProductQueryParam;
 import com.course.vo.ProductVo;
 
