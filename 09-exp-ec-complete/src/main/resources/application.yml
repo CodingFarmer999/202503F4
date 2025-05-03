@@ -2,8 +2,8 @@ server:
   port: 8085
 spring:
   datasource:
-    url: jdbc:oracle:thin:@//localhost:1521/ORCLPDB1
-    username: LOCAL
+    url: jdbc:oracle:thin:@//localhost:1521/xe
+    username: EC
     password: root
     driver-class-name: oracle.jdbc.OracleDriver
   jpa:
@@ -12,4 +12,4 @@ spring:
       hibernate:
         format_sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
