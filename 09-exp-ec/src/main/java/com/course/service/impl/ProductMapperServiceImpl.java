@@ -69,7 +69,7 @@ public class ProductMapperServiceImpl implements ProductService {
 
 	@Override
 	public ProductVo getProductById(Long id) {
-//		Integer.parseInt("ABC");
+		Integer.parseInt("ABC");
 		ProductDto dto = productMapper.findById(id);
 		ProductVo vo = new ProductVo();
 		vo.setName(dto.getName());

@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 
 import com.course.vo.ProductVo;
 
-@Component
-@Aspect
+//@Component
+//@Aspect
 public class ProductAspect {
 
 	// 日誌記錄器
