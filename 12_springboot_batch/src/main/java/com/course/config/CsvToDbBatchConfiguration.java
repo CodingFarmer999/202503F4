@@ -1,20 +1,27 @@
 package com.course.config;
 
+import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
+import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.data.RepositoryItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.LineMapper;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
 import com.course.entity.Person;
+import com.course.repository.PersonRepository;
 
 @Configuration
 public class CsvToDbBatchConfiguration {
 
+	@Autowired
+	private PersonRepository personRepository;
 	// Reader
     @Bean
     ItemReader<Person> personReader() {
@@ -58,8 +65,21 @@ public class CsvToDbBatchConfiguration {
     }
     
 	// Processor
-	
+    @Bean
+    ItemProcessor<Person, Person> personProcessor() {
+        return new CsvItemProcessor();
+    }
+    
 	// Writer
+    @Bean
+    ItemWriter<Person> personWriter() {
+
+        RepositoryItemWriter<Person> itemWriter = new RepositoryItemWriter<>();
+        itemWriter.setRepository(personRepository);
+        itemWriter.setMethodName("save");
+
+        return itemWriter;
+    }
 	
 	// Step
 	
