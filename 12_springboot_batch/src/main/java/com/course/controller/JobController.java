@@ -20,7 +20,7 @@ public class JobController {
     @GetMapping("/csvLauncher")
     public void csvToDb() throws Exception {
         JobParameters jobParams = new JobParametersBuilder()
-                // .addLong("Start-At", System.currentTimeMillis())
+                .addLong("Start-At", System.currentTimeMillis())
                 .toJobParameters();
         jobLauncher.run(job, jobParams);
     }
