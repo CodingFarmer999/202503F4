@@ -1,5 +1,10 @@
 package com.course.config;
 
+import org.springframework.batch.core.Job;
+import org.springframework.batch.core.Step;
+import org.springframework.batch.core.job.builder.JobBuilder;
+import org.springframework.batch.core.repository.JobRepository;
+import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
@@ -13,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import com.course.entity.Person;
 import com.course.repository.PersonRepository;
@@ -22,6 +28,7 @@ public class CsvToDbBatchConfiguration {
 
 	@Autowired
 	private PersonRepository personRepository;
+	
 	// Reader
     @Bean
     ItemReader<Person> personReader() {
@@ -82,6 +89,24 @@ public class CsvToDbBatchConfiguration {
     }
 	
 	// Step
-	
+    @Bean
+    Step step1(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
+        return new StepBuilder("step-1", jobRepository)
+                .<Person, Person>chunk(2, transactionManager)
+                .reader(personReader())
+                .processor(personProcessor())
+                .writer(personWriter())
+                .build();
+    }
+    
 	// Job
+    @Bean
+    Job personJob(JobRepository jobRepository, Step step1) {
+        return new JobBuilder("personJob", jobRepository)
+                .start(step1)
+                // .next(step2)
+                // step2
+                // step3
+                .build();
+    }
 }
