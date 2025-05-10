@@ -22,7 +22,7 @@ import com.course.repository.ProductRepository;
 @Service
 public class ProductService {
 
-	private static final String UPLOAD_DIR = "/Users/yaochilee/static/images/";
+	private static final String UPLOAD_DIR = "/Users/student/static/images/";
 	
 	@Autowired
 	private ProductRepository productRepo;
