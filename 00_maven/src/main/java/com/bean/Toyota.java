@@ -2,28 +2,33 @@ package com.bean;
 
 public class Toyota {
 
-	Engine engine;
+	/**	引擎 */
+	private Engine engine;
 	
 	public Toyota() {
-		super();
+		
 	}
 	
+	/**
+	 * Constructor 注入
+	 * @param engine
+	 */
 	public Toyota(Engine engine) {
-		super();
 		this.engine = engine;
 	}
 	
+	/**
+	 * Setter 注入
+	 * @param engine
+	 */
 	public void setEngine(Engine engine) {
 		this.engine = engine;
 	}
 
-
-
 	public void move() {
-		// go
-//		ToyotaEngine engine = new ToyotaEngine();
-//		engine.start();
-		
+		// 在 Toyota 類別當中，直接 new ToyotaEngine，Toyota 依賴於 ToyotaEngine
+		// ToyotaEngine engine = new ToyotaEngine();
+
 		engine.start();
 	}
 }
