@@ -22,13 +22,15 @@ public class UserService {
 		// 判斷登入成功或失敗
 		
 		User user = userDao.findByUsernameAndPassword(username, password);
-		if (user != null) {
-			// 登入成功
-			return true;
-		} else {
-			// Fail
-			return false;
-		}
+//		if (user != null) {
+//			// 登入成功
+//			return true;
+//		} else {
+//			// Fail
+//			return false;
+//		}
+		// 如果作為判斷的條件本身已經是一個布林值，就不需要在寫 if 判斷式
+		return user != null;
 	}
 	
 	public void addUser(String username, String password) {
@@ -74,7 +76,8 @@ public class UserService {
 	public void upateUser(UserVo userVo) {
 		User user = findByUsername(userVo.getUsername());
 
-		// "", " "
+		// blank: "", " " 有空白的情況，都視為blank
+		// empty: 字串長度為0，" " 有空白的情況，不為empty
 		if (userVo.getPassword() != null && !userVo.getPassword().isBlank()) {
 			user.setPassword(userVo.getPassword());
 		}
