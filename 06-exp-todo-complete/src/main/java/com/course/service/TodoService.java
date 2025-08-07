@@ -20,8 +20,13 @@ public class TodoService {
 	@Autowired
 	private TodoServiceHelper helper;
 	
+	/**
+	 * 取得所有待辦事項
+	 * @return
+	 */
 	public List<TodoVo> getAllTodoList() {
 		List<TodoDto> dtoList = todoDao.findAll();
+		// 將 DTO 轉換成 VO
 		return dtoList.stream().map(dto -> helper.convertToVo(dto)).collect(Collectors.toList());
 	}
 	

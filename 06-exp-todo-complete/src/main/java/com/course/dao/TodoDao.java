@@ -39,5 +39,10 @@ public interface TodoDao {
 	 */
 	TodoDto findById(Long id);
 	
+	/**
+	 * 依條件搜尋
+	 * @param condition
+	 * @return
+	 */
 	List<TodoDto> findByCondition(SearchCondition condition);
 }

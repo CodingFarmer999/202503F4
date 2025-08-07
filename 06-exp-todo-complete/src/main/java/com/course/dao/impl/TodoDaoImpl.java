@@ -39,7 +39,6 @@ public class TodoDaoImpl implements TodoDao {
 		sb.append("U.USERNAME ");
 		sb.append("FROM TODO T ");
 		sb.append("JOIN USER U ON U.ID = T.USERID ");
-		// String sql = "SELECT * FROM TODO T";
 		
 		RowMapper<TodoDto> rowMapper = (rs, rowNum) -> {
 			TodoDto dto = new TodoDto();
