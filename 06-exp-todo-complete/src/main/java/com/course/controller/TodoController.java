@@ -53,12 +53,12 @@ public class TodoController {
 	@PostMapping("/todo")
 	public String add(@Valid @ModelAttribute("todo") TodoVo todoVo, BindingResult bindingResult) {
 		System.out.println(todoVo);
-		if (!bindingResult.hasErrors()) {
-			todoService.addTodo(todoVo);
-		} else {
+		if (bindingResult.hasErrors()) {
+			// 有欄位檢核錯誤，回到新增頁面
 			return "addTodoPage";
 		}
 
+		todoService.addTodo(todoVo);
 		// 新增完畢後，轉導至首頁，避免refresh重送新增
 		return "redirect:/";
 	}
