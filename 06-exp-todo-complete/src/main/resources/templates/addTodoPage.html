@@ -6,8 +6,9 @@
 </head>
 <body>
 <h1>新增代辦事項</h1>
+<div th:replace="~{common :: image}"></div>
 
-<form th:action="@{/todo}" th:object="${todo}" method="POST">
+<form th:action="@{/todo}" th:object="${todo}" method="POST" enctype="multipart/form-data">
     <div>
         <label for="title">標題:</label>
         <input type="text" id="title" th:field="*{title}" />
@@ -22,6 +23,11 @@
     <div>
         <label for="memo">備註:</label>
         <input type="text" id="memo" th:field="*{memo}" />
+    </div>
+    
+    <div>
+        <label for="file">上傳檔案:</label>
+        <input type="file" id="file" th:field="*{file}" />
     </div>
     <div>
         <button type="submit">新增待辦事項</button>

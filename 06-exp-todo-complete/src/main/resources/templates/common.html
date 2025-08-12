@@ -5,6 +5,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div th:fragment="image">
+		<img th:src="@{img/todo{id}.jpg (id=${2})}" width="800px"/>
+	</div>
 
 	<footer th:fragment="footer">
 		© 2025 待辦事項. All Rights Reserved.
