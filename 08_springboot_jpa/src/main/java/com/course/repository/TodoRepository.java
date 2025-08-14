@@ -19,7 +19,7 @@ import com.course.entity.TodoEntity;
 public interface TodoRepository extends JpaRepository<TodoEntity, Long> {
 
 	// SQL : select * from todo where title = ?
-	public List<TodoEntity> findByTitle(String title);
+	List<TodoEntity> findByTitle(String title);
 	
 	List<TodoEntity> findByDueDate(Date dueDate);
 	
@@ -52,6 +52,7 @@ public interface TodoRepository extends JpaRepository<TodoEntity, Long> {
 	@Modifying
 	@Query("update TodoEntity set title = ?2 where id = ?1")
 	Integer updateTodo(Long id, String title);
+	
 	
 	public List<TodoEntity> findByTitle(String title, Sort sort);
 	

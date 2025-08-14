@@ -21,24 +21,75 @@ public class TodoService {
 	@Autowired
 	private TodoRepository todoRepository;
 	
+	/**
+	 * 取得所有待辦事項
+	 * @return
+	 */
 	public List<TodoEntity> getAllTodo() {
 		return todoRepository.findAll();
 	}
 	
+	/**
+	 * 依照 ID 取得待辦事項
+	 * findById 取得的是 Optional 物件
+	 * 需要明確處理沒有值的狀況
+	 * @param id
+	 * @return
+	 */
+	public TodoEntity findTodoById(Long id) {
+		return todoRepository.findById(id).orElse(null);
+	}
+	
+	/**
+	 * 新增待辦事項
+	 * save 方法會回傳一個 Entity 物件
+	 * 如果使用"自增主鍵" 或是 "序列"，回傳的 Entity 會帶有本次新增時所產生的鍵值
+	 * @param entity
+	 * @return
+	 */
 	public TodoEntity addTodo(TodoEntity entity) {
 		TodoEntity todo = todoRepository.save(entity);
 		return todo;
 	}
 	
+	/**
+	 * 刪除 所有待辦事項
+	 * 原生的 deleteAll，會先把資料的所有ID找出來，並依照ID去逐筆刪除資料
+	 */
 	public void deleteAll() {
 		todoRepository.deleteAll();
 	}
 	
+	/**
+	 * 批次刪除 所有待辦事項
+	 * 一次刪除所有資料
+	 */
 	public void deleteAllInBatch() {
 		todoRepository.deleteAllInBatch();
 	}
 	
-	// id Title
+	/**
+	 * 刪除待辦事項 By ID
+	 */
+	public void deleteTodoById(Long id) {
+		todoRepository.deleteById(id);
+	}
+	
+	/**
+	 * 刪除待辦事項 By Entity
+	 */
+	public void delete(Long id) {
+		TodoEntity entity = findTodoById(id);
+		todoRepository.delete(entity);
+	}
+	
+	/**
+	 * 更新 待辦事項
+	 * 傳入的物件當中，有鍵值以及要更新的資料
+	 * save的操作方法是 Entity，所以需要先透過 ID 取得 Entity，再更新當中的內容
+	 * @param entity
+	 * @return
+	 */
 	public TodoEntity updateTodo(TodoEntity entity) {
 		
 //		Long id = entity.getId();
@@ -55,11 +106,22 @@ public class TodoService {
 		return todoRepository.save(todo2);
 	}
 	
-	public List<TodoEntity> getByTitle(String title) {
+	/**
+	 * 依照標題取得待辦事項
+	 * @param title
+	 * @return
+	 */
+	public List<TodoEntity> getTodoByTitle(String title) {
 		return todoRepository.findByTitle(title);
 	}
 	
-	public List<TodoEntity> getByTitleAndUnComplete(String title, Integer status) {
+	/**
+	 * 依照標題以及狀態取得代辦事項
+	 * @param title
+	 * @param status
+	 * @return
+	 */
+	public List<TodoEntity> getTodoByTitleAndStatus(String title, Integer status) {
 		return todoRepository.findByTitleAndStatus(title, status);
 	}
 	
@@ -121,8 +183,12 @@ public class TodoService {
 		return todoRepository.updateTodo(id, title);
 	}
 	
-	public List<TodoEntity> getByTitleSort(String title) {
-//		Sort sort = Sort.by("dueDate");
+	public List<TodoEntity> getTodoByTitleWithSort(String title) {
+		// 依到期日排序昇冪排序
+		// Sort sort = Sort.by("dueDate");
+		
+		// 如果需要降冪排序，需要使用 Sort.Order
+		// 後面可以接受多個排序條件
 		Sort sort = Sort.by(Sort.Order.desc("dueDate"));
 		return todoRepository.findByTitle(title, sort);
 	}

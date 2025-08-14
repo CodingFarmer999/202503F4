@@ -25,44 +25,54 @@ public class TodoController {
 	@Autowired
 	private TodoService todoService;
 	
+	@Operation(summary = "取得所有待辦事項(findAll)", tags = "JPA 原生方法")
 	@GetMapping("/todos")
 	public List<TodoEntity> getAllTodoList() {
 		return todoService.getAllTodo();
 	}
 	
+	@Operation(summary = "新增待辦事項(save)", tags = "JPA 原生方法")
 	@PostMapping("/todo")
 	public TodoEntity addTodo(@RequestBody TodoEntity entity) {
-		System.out.println(entity);
 		return todoService.addTodo(entity);
 	}
 	
+	@Operation(summary = "刪除所有待辦事項(deleteAll)", tags = "JPA 原生方法")
 	@DeleteMapping("/todos")
 	public String deleteAll() {
 		todoService.deleteAll();
 		return "OK";
 	}
 	
+	@Operation(summary = "刪除所有待辦事項(deleteAllInBatch)", tags = "JPA 原生方法")
 	@DeleteMapping("/todos/batch")
 	public String deleteAllInBatch() {
 		todoService.deleteAllInBatch();
 		return "OK";
 	}
 	
+	@Operation(summary = "依照 ID 刪除待辦事項(deleteById)", tags = "JPA 原生方法")
+	@DeleteMapping("/todo/{id}")
+	public String deleteTodoById(@PathVariable Long id) {
+		todoService.deleteTodoById(id);
+		return "OK";
+	}
 	
 	@PatchMapping("/todo")
 	public TodoEntity updateTodo(@RequestBody TodoEntity entity) {
 		return todoService.updateTodo(entity);
 	}
 	
+	@Operation(summary = "依照標題取得待辦事項", tags = "QueryMethod")
 	@GetMapping("/todo/title/{title}")
 	public List<TodoEntity> getByTitle(@PathVariable String title) {
-		return todoService.getByTitle(title);
+		return todoService.getTodoByTitle(title);
 	}
 	
-	@Operation(summary = "找出未完成的待辦事項")
-	@GetMapping("/todoUnComplete")
-	public List<TodoEntity> getByTitleAndUnComplete(String title, Integer status) {
-		return todoService.getByTitleAndUnComplete(title, status);
+	@Operation(summary = "依照標題以及狀態取得待辦事項", tags = "QueryMethod")
+	@GetMapping("/todo/getByTitleAndStatus")
+	public List<TodoEntity> getByTitleAndStatus(String title, Integer status) {
+		return todoService.getTodoByTitleAndStatus(title, status);
 	}
 	
 	@Operation(summary = "找出未完成的待辦事項")
@@ -117,7 +127,7 @@ public class TodoController {
 	@Operation(summary = "取得並排序", tags = "@QueryMethod")
 	@GetMapping("/todo/titleSort/{title}")
 	public List<TodoEntity> getByTitleSort(@PathVariable String title) {
-		return todoService.getByTitleSort(title);
+		return todoService.getTodoByTitleWithSort(title);
 	}
 	@Operation(summary = "取得使用者", tags = "@QueryMethod")
 	@GetMapping("/todo/user")
